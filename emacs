@@ -7,7 +7,13 @@
 (package-initialize) 
 
 
-(setq package-list '(helm projectile helm-projectile magit zenburn-theme))
+(setq package-list '(helm
+		     projectile
+		     helm-projectile
+		     magit
+		     zenburn-theme
+		     js2-mode
+		     ac-js2))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -79,6 +85,16 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 (setq org-agenda-files (quote ("~/org")))
+
+
+;; --
+;; js
+;; --
+
+(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
+(add-hook 'js-mode-hook 'js2-minor-mode)
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+(setq ac-js2-evaluate-calls t)
 
 
 ;; -------
