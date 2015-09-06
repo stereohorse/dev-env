@@ -8,12 +8,18 @@
 
 
 (setq package-list '(helm
-		     projectile
-		     helm-projectile
-		     magit
-		     zenburn-theme
-		     js2-mode
-		     ac-js2))
+                     projectile
+                     helm-projectile
+                     magit
+                     zenburn-theme
+                     js2-mode
+                     exec-path-from-shell
+                     ac-js2
+                     auto-complete
+                     go-mode
+                     go-projectile
+                     go-autocomplete
+                     flycheck))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -21,6 +27,15 @@
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
+
+
+;; -----
+;; paths
+;; -----
+
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-env "GOPATH"))
 
 
 ;; ----
@@ -52,6 +67,21 @@
 (helm-projectile-on)
 
 (setq projectile-switch-project-action 'helm-projectile)
+
+
+;; -----------
+;; indentation
+;; -----------
+
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+(setq indent-line-function 'insert-tab)
+
+(setq tab-stop-list (number-sequence 2 200 2))
+
+(defvaralias 'css-indent-level 'tab-width)
+(defvaralias 'scss-indent-level 'tab-width)
+(defvaralias 'sass-indent-level 'tab-width)
 
 
 ;; --
@@ -102,3 +132,57 @@
 ;; -------
 
 (setq backup-directory-alist `(("." . "~/.saves")))
+
+
+;; ----
+;; nxml
+;; ----
+
+(mapc
+ (lambda (pair)
+   (if (or (eq (cdr pair) 'xml-mode)
+           (eq (cdr pair) 'sgml-mode)
+           (eq (cdr pair) 'html-mode))
+       (setcdr pair 'nxml-mode)))
+ magic-mode-alist)
+
+
+;; ----
+;; sass
+;; ----
+
+(require 'scss-mode)
+
+
+;; --
+;; go
+;; --
+
+(require 'go-mode)
+(require 'go-projectile)
+(add-hook 'before-save-hook 'gofmt-before-save)
+(require 'go-autocomplete)
+
+(defun my-go-mode-hook ()
+  ; Use goimports instead of go-fmt
+  (setq gofmt-command "goimports")
+  ; Call Gofmt before saving
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  ; Customize compile command to run go build
+  (if (not (string-match "go" compile-command))
+      (set (make-local-variable 'compile-command)
+           "go build -v && go test -v && go vet"))
+  ; Godef jump key binding
+  (local-set-key (kbd "M-.") 'godef-jump))
+(add-hook 'go-mode-hook 'my-go-mode-hook)
+
+(load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
+
+
+;; ------------
+;; autocomplete
+;; ------------
+
+(require 'auto-complete-config)
+(ac-config-default)
+
