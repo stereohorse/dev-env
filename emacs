@@ -16,6 +16,13 @@
                      exec-path-from-shell
                      ac-js2
                      auto-complete
+                     paredit
+                     geiser
+                     scss-mode
+                     yaml-mode
+                     racket-mode
+                     rainbow-delimiters
+                     edts
                      go-mode
                      go-projectile
                      go-autocomplete
@@ -90,12 +97,16 @@
 
 (load-theme 'zenburn t)
 (global-visual-line-mode t)
-(scroll-bar-mode -1)
 
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 
 (global-linum-mode t)
+
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
+(scroll-bar-mode -1)
 
 
 ;; ----
@@ -185,4 +196,28 @@
 
 (require 'auto-complete-config)
 (ac-config-default)
+
+
+;; -------
+;; rainbow
+;; -------
+
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+
+;; -------
+;; paredit
+;; -------
+
+(add-hook 'racket-mode-hook #'enable-paredit-mode)
+
+
+;; ----
+;; edts
+;; ----
+
+(add-hook 'after-init-hook 'my-after-init-hook)
+(defun my-after-init-hook ()
+  (require 'edts-start))
 
