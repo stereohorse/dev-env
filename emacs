@@ -22,6 +22,7 @@
                      yaml-mode
                      racket-mode
                      rainbow-delimiters
+                     cider
                      edts
                      go-mode
                      go-projectile
@@ -221,3 +222,15 @@
 (defun my-after-init-hook ()
   (require 'edts-start))
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(edts-man-root "/Users/stereohorse/.emacs.d/edts/doc/18.0"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
