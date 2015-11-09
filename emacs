@@ -11,6 +11,7 @@
                      projectile
                      helm-projectile
                      magit
+                     company
                      zenburn-theme
                      js2-mode
                      exec-path-from-shell
@@ -29,7 +30,9 @@
                      go-projectile
                      go-autocomplete
                      flycheck
-                     clj-refactor))
+                     clj-refactor
+                     haskell-mode
+                     ghc))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -190,7 +193,7 @@
   (local-set-key (kbd "M-.") 'godef-jump))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
-(load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
+;(load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
 
 
 ;; ------------
@@ -198,7 +201,7 @@
 ;; ------------
 
 (require 'auto-complete-config)
-(ac-config-default)
+;(ac-config-default)
 
 
 ;; -------
@@ -208,6 +211,8 @@
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
+
 
 ;; -------
 ;; paredit
@@ -244,6 +249,7 @@
 
 (require 'smartparens-config)
 (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
+(add-hook 'cider-repl-mode-hook #'smartparens-strict-mode)
 
 
 ;; ------------
@@ -258,3 +264,31 @@
     (cljr-add-keybindings-with-prefix "C-c C-m"))
 
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
+
+;; -----
+;; cider
+;; -----
+
+(add-hook 'cider-mode-hook #'eldoc-mode)
+
+
+;; -------
+;; company
+;; -------
+
+(add-hook 'cider-repl-mode-hook #'company-mode)
+(add-hook 'cider-mode-hook #'company-mode)
+
+
+;; -------
+;; haskell
+;; -------
+
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+
+(autoload 'ghc-init "ghc" nil t)
+(autoload 'ghc-debug "ghc" nil t)
+(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+
+(add-to-list 'exec-path "~/Library/Haskell/bin")
