@@ -3,36 +3,22 @@
 ;; --------
 
 (require 'package) 
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (package-initialize) 
 
 
 (setq package-list '(helm
                      projectile
                      helm-projectile
+                     exec-path-from-shell
                      magit
                      company
                      zenburn-theme
-                     js2-mode
-                     exec-path-from-shell
-                     ac-js2
-                     auto-complete
-                     paredit
-                     geiser
-                     scss-mode
-                     yaml-mode
-                     racket-mode
                      rainbow-delimiters
                      cider
                      smartparens
-                     edts
-                     go-mode
-                     go-projectile
-                     go-autocomplete
                      flycheck
-                     clj-refactor
-                     haskell-mode
-                     ghc))
+                     clj-refactor))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -41,15 +27,14 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-
+  
 ;; -----
 ;; paths
 ;; -----
 
 (when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-env "GOPATH"))
-
+  (exec-path-from-shell-initialize))
+  
 
 ;; ----
 ;; helm
@@ -123,85 +108,11 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 
 
-;; --------
-;; org-mode
-;; --------
-
-(require 'org)
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
-(setq org-agenda-files (quote ("~/org")))
-
-
-;; --
-;; js
-;; --
-
-(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
-(add-hook 'js-mode-hook 'js2-minor-mode)
-(add-hook 'js2-mode-hook 'ac-js2-mode)
-(setq ac-js2-evaluate-calls t)
-
-
 ;; -------
 ;; backups
 ;; -------
 
 (setq backup-directory-alist `(("." . "~/.saves")))
-
-
-;; ----
-;; nxml
-;; ----
-
-(mapc
- (lambda (pair)
-   (if (or (eq (cdr pair) 'xml-mode)
-           (eq (cdr pair) 'sgml-mode)
-           (eq (cdr pair) 'html-mode))
-       (setcdr pair 'nxml-mode)))
- magic-mode-alist)
-
-
-;; ----
-;; sass
-;; ----
-
-(require 'scss-mode)
-
-
-;; --
-;; go
-;; --
-
-(require 'go-mode)
-(require 'go-projectile)
-(add-hook 'before-save-hook 'gofmt-before-save)
-(require 'go-autocomplete)
-
-(defun my-go-mode-hook ()
-  ; Use goimports instead of go-fmt
-  (setq gofmt-command "goimports")
-  ; Call Gofmt before saving
-  (add-hook 'before-save-hook 'gofmt-before-save)
-  ; Customize compile command to run go build
-  (if (not (string-match "go" compile-command))
-      (set (make-local-variable 'compile-command)
-           "go build -v && go test -v && go vet"))
-  ; Godef jump key binding
-  (local-set-key (kbd "M-.") 'godef-jump))
-(add-hook 'go-mode-hook 'my-go-mode-hook)
-
-;(load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
-
-
-;; ------------
-;; autocomplete
-;; ------------
-
-(require 'auto-complete-config)
-;(ac-config-default)
 
 
 ;; -------
@@ -214,43 +125,15 @@
 (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
 
 
-;; -------
-;; paredit
-;; -------
-
-(add-hook 'racket-mode-hook #'enable-paredit-mode)
-
-
-;; ----
-;; edts
-;; ----
-
-(add-hook 'after-init-hook 'my-after-init-hook)
-(defun my-after-init-hook ()
-  (require 'edts-start))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(edts-man-root "/Users/stereohorse/.emacs.d/edts/doc/18.0"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
-
 ;; -----------
 ;; smartparens
 ;; -----------
 
-(require 'smartparens-config)
-(add-hook 'clojure-mode-hook #'smartparens-strict-mode)
-(add-hook 'cider-repl-mode-hook #'smartparens-strict-mode)
-
+;(require 'smartparens-config)
+;(add-hook 'clojure-mode-hook #'smartparens-strict-mode)
+;(add-hook 'cider-repl-mode-hook #'smartparens-strict-mode)
+(smartparens-global-mode t)
+  
 
 ;; ------------
 ;; clj-refactor
@@ -265,6 +148,7 @@
 
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
 
+ 
 ;; -----
 ;; cider
 ;; -----
@@ -276,19 +160,6 @@
 ;; company
 ;; -------
 
-(add-hook 'cider-repl-mode-hook #'company-mode)
-(add-hook 'cider-mode-hook #'company-mode)
+(global-company-mode)
+(setq company-idle-delay 0)
 
-
-;; -------
-;; haskell
-;; -------
-
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-
-(autoload 'ghc-init "ghc" nil t)
-(autoload 'ghc-debug "ghc" nil t)
-(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
-
-(add-to-list 'exec-path "~/Library/Haskell/bin")
