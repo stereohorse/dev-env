@@ -13,6 +13,7 @@
                      exec-path-from-shell
                      magit
                      company
+                     neotree
                      multiple-cursors
                      rainbow-delimiters
                      cider
@@ -174,3 +175,11 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
+
+;; -------
+;; neotree
+;; -------
+
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(setq projectile-switch-project-action 'neotree-projectile-action)
