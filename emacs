@@ -13,12 +13,12 @@
                      exec-path-from-shell
                      magit
                      company
-                     zenburn-theme
+                     multiple-cursors
                      rainbow-delimiters
                      cider
                      smartparens
-                     flycheck
-                     clj-refactor))
+                     clj-refactor
+                     cyberpunk-theme))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -27,20 +27,21 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-  
+
 ;; -----
 ;; paths
 ;; -----
 
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
-  
+
 
 ;; ----
 ;; helm
 ;; ----
 
 (require 'helm-config)
+
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "M-x") 'helm-M-x)
 
@@ -77,16 +78,13 @@
 
 (setq tab-stop-list (number-sequence 2 200 2))
 
-(defvaralias 'css-indent-level 'tab-width)
-(defvaralias 'scss-indent-level 'tab-width)
-(defvaralias 'sass-indent-level 'tab-width)
-
 
 ;; --
 ;; ui
 ;; --
 
-(load-theme 'zenburn t)
+(add-hook 'after-init-hook 
+          (lambda () (load-theme 'cyberpunk t)))
 (global-visual-line-mode t)
 
 (setq inhibit-splash-screen t)
@@ -120,6 +118,7 @@
 ;; -------
 
 (require 'rainbow-delimiters)
+
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
@@ -129,11 +128,8 @@
 ;; smartparens
 ;; -----------
 
-;(require 'smartparens-config)
-;(add-hook 'clojure-mode-hook #'smartparens-strict-mode)
-;(add-hook 'cider-repl-mode-hook #'smartparens-strict-mode)
 (smartparens-global-mode t)
-  
+
 
 ;; ------------
 ;; clj-refactor
@@ -142,13 +138,13 @@
 (require 'clj-refactor)
 
 (defun my-clojure-mode-hook ()
-    (clj-refactor-mode 1)
-    (yas-minor-mode 1) ; for adding require/use/import
-    (cljr-add-keybindings-with-prefix "C-c C-m"))
+  (clj-refactor-mode 1)
+  (yas-minor-mode 1) ; for adding require/use/import
+  (cljr-add-keybindings-with-prefix "C-c C-m"))
 
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
 
- 
+
 ;; -----
 ;; cider
 ;; -----
@@ -161,5 +157,20 @@
 ;; -------
 
 (global-company-mode)
-(setq company-idle-delay 0)
+
+(setq company-tooltip-limit 20)
+(setq company-idle-delay .3)
+(setq company-echo-delay 0)
+
+
+;; ----------------
+;; multiple cursors
+;; ----------------
+
+(require 'multiple-cursors)
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
