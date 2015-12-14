@@ -4,6 +4,7 @@
 
 (require 'package) 
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 (package-initialize) 
 
 
@@ -19,7 +20,8 @@
                      cider
                      smartparens
                      clj-refactor
-                     cyberpunk-theme))
+                     cyberpunk-theme
+                     elpy))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -129,6 +131,8 @@
 ;; smartparens
 ;; -----------
 
+(smartparens-global-mode t)
+
 (require 'smartparens-config)
   
 (define-key smartparens-mode-map (kbd "C-M-f") 'sp-forward-sexp)
@@ -136,6 +140,8 @@
 
 (define-key smartparens-mode-map (kbd "C-M-k") 'sp-kill-sexp)
 (define-key smartparens-mode-map (kbd "C-M-w") 'sp-copy-sexp)
+
+(define-key smartparens-mode-map (kbd "M-<backspace>") 'sp-backward-unwrap-sexp)
 
 (define-key smartparens-mode-map (kbd "C-<right>") 'sp-forward-slurp-sexp)
 (define-key smartparens-mode-map (kbd "C-<left>") 'sp-forward-barf-sexp)
@@ -193,4 +199,10 @@
 
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
+
+;; ----
+;; elpy
+;; ----
+
+(elpy-enable)
 
