@@ -2,9 +2,10 @@
 ;; packages
 ;; --------
 
-(require 'package) 
+(require 'package)
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
-(package-initialize) 
+(add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+(package-initialize)
 
 
 (setq package-list '(helm
@@ -19,7 +20,8 @@
                      cider
                      smartparens
                      clj-refactor
-                     cyberpunk-theme))
+                     cyberpunk-theme
+                     elpy))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -84,7 +86,7 @@
 ;; ui
 ;; --
 
-(add-hook 'after-init-hook 
+(add-hook 'after-init-hook
           (lambda () (load-theme 'cyberpunk t)))
 (global-visual-line-mode t)
 
@@ -129,10 +131,12 @@
 ;; smartparens
 ;; -----------
 
+(smartparens-global-mode t)
+
 (require 'smartparens-config)
 
 (smartparens-global-mode t)
-  
+
 (define-key smartparens-mode-map (kbd "C-M-f") 'sp-forward-sexp)
 (define-key smartparens-mode-map (kbd "C-M-b") 'sp-backward-sexp)
 
@@ -141,13 +145,13 @@
 
 (define-key smartparens-mode-map (kbd "M-<delete>") 'sp-unwrap-sexp)
 (define-key smartparens-mode-map (kbd "M-<backspace>") 'sp-backward-unwrap-sexp)
-  
+
 (define-key smartparens-mode-map (kbd "C-<right>") 'sp-forward-slurp-sexp)
 (define-key smartparens-mode-map (kbd "C-<left>") 'sp-forward-barf-sexp)
 (define-key smartparens-mode-map (kbd "C-M-<left>") 'sp-backward-slurp-sexp)
 (define-key smartparens-mode-map (kbd "C-M-<right>") 'sp-backward-barf-sexp)
 
-  
+
 ;; ------------
 ;; clj-refactor
 ;; ------------
@@ -199,3 +203,8 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
+;; ----
+;; elpy
+;; ----
+
+(elpy-enable)
