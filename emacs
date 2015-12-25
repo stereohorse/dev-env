@@ -12,15 +12,21 @@
                      projectile
                      helm-projectile
                      exec-path-from-shell
+                     
                      magit
                      company
+                     
+                     ace-jump-mode
                      neotree
                      multiple-cursors
+                     
                      rainbow-delimiters
                      cider
                      smartparens
                      clj-refactor
+                     
                      cyberpunk-theme
+                     
                      elpy))
 
 (unless package-archive-contents
@@ -107,6 +113,10 @@
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x g") 'magit-status)
+
+
+;; navigation
+(setq next-line-add-newlines t)
 
 
 ;; -------
@@ -200,9 +210,28 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
+
 ;; ----
 ;; elpy
 ;; ----
 
 (elpy-enable)
+(global-set-key (kbd "C-c z") 'pyvenv-restart-python)
+(elpy-use-ipython)
 
+
+;; --------
+;; ace jump
+;; --------
+
+(autoload
+  'ace-jump-mode-pop-mark
+  "ace-jump-mode"
+  "Ace jump back:-)"
+  t)
+
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
+  
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
