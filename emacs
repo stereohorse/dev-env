@@ -120,6 +120,8 @@
 
 (delete-selection-mode 1)
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 
 ;; ----
 ;; keys
