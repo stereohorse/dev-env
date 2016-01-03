@@ -20,6 +20,8 @@
                      expand-region
 
                      multi-term
+
+                     smart-mode-line
                      
                      ace-jump-mode
                      neotree
@@ -317,3 +319,11 @@
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
+
+;; ---------------
+;; smart mode line
+;; ---------------
+
+(setq sml/theme 'dark)
+(setq sml/no-confirm-load-theme t)
+(sml/setup)
