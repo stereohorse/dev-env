@@ -38,8 +38,8 @@
                      js2-mode
                      js2-refactor
                      skewer-mode
-                     ac-js2
-                     auto-complete))
+                     tern
+                     company-tern))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -112,6 +112,8 @@
 (setq inhibit-startup-message t)
 
 (global-linum-mode t)
+
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -205,6 +207,8 @@
 
 (global-company-mode)
 
+(add-to-list 'company-backends 'company-tern)
+
 (setq company-tooltip-limit 20)
 (setq company-idle-delay .3)
 (setq company-echo-delay 0)
@@ -293,20 +297,11 @@
 (skewer-setup)
 
 
-;; ---------------------------------------
-;; temporary auto-complete mode for ac-js2
-;; --------------------------------------
+;; ----
+;; tern
+;; ----
 
-(ac-config-default)
-(global-auto-complete-mode t)
-(setq ac-modes '(js2-mode))
-
-
-;; -----
-;; ac-j2
-;; -----
-
-(add-hook 'js2-mode-hook 'ac-js2-mode)
+(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
 
 
 ;; -------------
