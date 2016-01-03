@@ -5,7 +5,7 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
-(package-initialize) 
+(package-initialize)
 
 
 (setq package-list '(helm
@@ -104,7 +104,7 @@
 ;; ui
 ;; --
 
-(add-hook 'after-init-hook 
+(add-hook 'after-init-hook
           (lambda () (load-theme 'cyberpunk t)))
 (global-visual-line-mode t)
 
@@ -158,13 +158,16 @@
 (smartparens-global-mode t)
 
 (require 'smartparens-config)
-  
+
+(smartparens-global-mode t)
+
 (define-key smartparens-mode-map (kbd "C-M-f") 'sp-forward-sexp)
 (define-key smartparens-mode-map (kbd "C-M-b") 'sp-backward-sexp)
 
 (define-key smartparens-mode-map (kbd "C-M-k") 'sp-kill-sexp)
 (define-key smartparens-mode-map (kbd "C-M-w") 'sp-copy-sexp)
 
+(define-key smartparens-mode-map (kbd "M-<delete>") 'sp-unwrap-sexp)
 (define-key smartparens-mode-map (kbd "M-<backspace>") 'sp-backward-unwrap-sexp)
 
 (define-key smartparens-mode-map (kbd "C-<right>") 'sp-forward-slurp-sexp)
@@ -172,7 +175,7 @@
 (define-key smartparens-mode-map (kbd "C-M-<left>") 'sp-backward-slurp-sexp)
 (define-key smartparens-mode-map (kbd "C-M-<right>") 'sp-backward-barf-sexp)
 
-  
+
 ;; ------------
 ;; clj-refactor
 ;; ------------
@@ -310,3 +313,4 @@
 
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
+
