@@ -1,5 +1,5 @@
 ;; --------
-;; packages
+;; Packages
 ;; --------
 
 (require 'package)
@@ -18,6 +18,8 @@
                      company
 
                      expand-region
+
+                     multi-term
                      
                      ace-jump-mode
                      neotree
@@ -37,9 +39,9 @@
                      web-mode
                      js2-mode
                      js2-refactor
-                     skewer-mode
                      tern
-                     company-tern))
+                     company-tern
+                     nodejs-repl))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -288,13 +290,17 @@
 ;; --------
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-hook 'js2-mode-hook '(lambda ()
+                            (local-set-key "\C-x\C-e" 'nodejs-repl-send-last-sexp)
+                            (local-set-key "\C-c\C-z" 'nodejs-repl)
+                            (local-set-key "\C-c\C-k" 'nodejs-repl-send-buffer)))
 
 
-;; ------
-;; skewer
-;; ------
+;; -----------
+;; nodejs-repl
+;; -----------
 
-(skewer-setup)
+(require 'nodejs-repl)
 
 
 ;; ----
