@@ -2,19 +2,22 @@
 ;; packages
 ;; --------
 
-(require 'package) 
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 (package-initialize) 
 
 
 (setq package-list '(helm
+                     helm-ag
                      projectile
                      helm-projectile
                      exec-path-from-shell
                      
                      magit
                      company
+
+                     expand-region
                      
                      ace-jump-mode
                      neotree
@@ -24,10 +27,19 @@
                      cider
                      smartparens
                      clj-refactor
+
+                     geiser
                      
                      cyberpunk-theme
                      
-                     elpy))
+                     elpy
+
+                     web-mode
+                     js2-mode
+                     js2-refactor
+                     skewer-mode
+                     ac-js2
+                     auto-complete))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -105,6 +117,8 @@
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
 (scroll-bar-mode -1)
+
+(delete-selection-mode 1)
 
 
 ;; ----
@@ -235,3 +249,64 @@
   
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+ 
+
+ ;; --------
+ ;; web mode
+ ;; --------
+
+(require 'web-mode)
+
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+
+(setq web-mode-enable-current-element-highlight t)
+
+
+;; ------------
+;; js2 refactor
+;; ------------
+
+(require 'js2-refactor)
+(add-hook 'js2-mode-hook #'js2-refactor-mode)
+
+
+;; --------
+;; js2 mode
+;; --------
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+
+;; ------
+;; skewer
+;; ------
+
+(skewer-setup)
+
+
+;; ---------------------------------------
+;; temporary auto-complete mode for ac-js2
+;; --------------------------------------
+
+(ac-config-default)
+(global-auto-complete-mode t)
+(setq ac-modes '(js2-mode))
+
+
+;; -----
+;; ac-j2
+;; -----
+
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+
+
+;; -------------
+;; expand region
+;; -------------
+
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
