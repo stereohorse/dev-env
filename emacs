@@ -103,6 +103,10 @@
 
 (setq tab-stop-list (number-sequence 2 200 2))
 
+(custom-set-variables
+ '(js2-basic-offset 2)
+ '(js2-bounce-indent-p t))
+
 
 ;; --
 ;; ui
@@ -127,6 +131,9 @@
 (delete-selection-mode 1)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+(set-frame-parameter (selected-frame) 'alpha '(97 97))
+(add-to-list 'default-frame-alist '(alpha 97 97))
 
 
 ;; ----
@@ -292,10 +299,8 @@
 ;; --------
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-hook 'js2-mode-hook '(lambda ()
-                            (local-set-key "\C-x\C-e" 'nodejs-repl-send-last-sexp)
-                            (local-set-key "\C-c\C-z" 'nodejs-repl)
-                            (local-set-key "\C-c\C-k" 'nodejs-repl-send-buffer)))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . js2-mode))
 
 
 ;; -----------
@@ -303,6 +308,10 @@
 ;; -----------
 
 (require 'nodejs-repl)
+(add-hook 'js2-mode-hook '(lambda ()
+                            (local-set-key "\C-x\C-e" 'nodejs-repl-send-last-sexp)
+                            (local-set-key "\C-c\C-z" 'nodejs-repl)
+                            (local-set-key "\C-c\C-k" 'nodejs-repl-send-buffer)))
 
 
 ;; ----
