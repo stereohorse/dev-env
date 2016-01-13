@@ -3,8 +3,10 @@
 ;; --------
 
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives
+             '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 (package-initialize)
 
 
@@ -38,12 +40,15 @@
                      
                      elpy
 
+                     json-mode
                      web-mode
                      js2-mode
                      js2-refactor
                      tern
                      company-tern
-                     nodejs-repl))
+                     nodejs-repl
+
+                     flycheck))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -266,22 +271,31 @@
 
 (eval-after-load "ace-jump-mode"
   '(ace-jump-mode-enable-mark-sync))
-  
+
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
- 
 
- ;; --------
- ;; web mode
- ;; --------
+
+;; --------
+;; web mode
+;; --------
 
 (require 'web-mode)
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
+(defun my-web-mode-hook ()
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
+(add-hook 'web-mode-hook  'my-web-mode-hook)
+
+(defadvice web-mode-highlight-part (around tweak-jsx activate)
+  (if (equal web-mode-content-type "jsx")
+      (let ((web-mode-enable-part-face nil))
+        ad-do-it)
+    ad-do-it))
 
 (setq web-mode-enable-current-element-highlight t)
 
@@ -299,8 +313,6 @@
 ;; --------
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.json\\'" . js2-mode))
 
 
 ;; -----------
@@ -336,3 +348,37 @@
 (setq sml/theme 'dark)
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
+
+
+;; ---------
+;; json mode
+;; ---------
+
+(require 'json-reformat)
+(json-reformat:indent 2)
+
+
+;; --------
+;; flycheck
+;; --------
+
+(require 'flycheck)
+
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+(setq-default flycheck-temp-prefix ".flycheck")
+
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(json-jsonlist)))
+
+
+;; ------
+;; eslint
+;; ------
+
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(javascript-jshint)))
+
+(flycheck-add-mode 'javascript-eslint 'web-mode)
