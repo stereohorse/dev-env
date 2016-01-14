@@ -36,7 +36,7 @@
 
                      geiser
                      
-                     cyberpunk-theme
+                     ample-theme
                      
                      elpy
 
@@ -120,7 +120,7 @@
 ;; --
 
 (add-hook 'after-init-hook
-          (lambda () (load-theme 'cyberpunk t)))
+          (lambda () (load-theme 'ample-flat t)))
 (global-visual-line-mode t)
 
 (setq inhibit-splash-screen t)
