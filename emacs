@@ -48,7 +48,9 @@
                      company-tern
                      nodejs-repl
 
-                     flycheck))
+                     flycheck
+
+                     w3m))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -382,3 +384,12 @@
                       '(javascript-jshint)))
 
 (flycheck-add-mode 'javascript-eslint 'web-mode)
+
+
+;; ---
+;; w3m
+;; ---
+
+(require 'w3m)
+
+(setq browse-url-browser-function 'w3m-browse-url)
