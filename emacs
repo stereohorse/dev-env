@@ -50,7 +50,11 @@
 
                      flycheck
 
-                     w3m))
+                     w3m
+
+                     symon
+
+                     wakatime-mode))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -112,7 +116,8 @@
 
 (custom-set-variables
  '(js2-basic-offset 2)
- '(js2-bounce-indent-p t))
+ '(js2-bounce-indent-p t)
+ '(wakatime-cli-path "/usr/local/bin/wakatime"))
 
 
 ;; --
@@ -308,6 +313,7 @@
 
 (require 'js2-refactor)
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
+(add-hook 'web-mode-hook #'js2-refactor-mode)
 
 
 ;; --------
@@ -333,6 +339,7 @@
 ;; ----
 
 (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+(add-hook 'web-mode-hook (lambda () (tern-mode t)))
 
 
 ;; -------------
@@ -393,3 +400,9 @@
 (require 'w3m)
 
 (setq browse-url-browser-function 'w3m-browse-url)
+
+;; --------
+;; wakatime
+;; --------
+
+(global-wakatime-mode)
