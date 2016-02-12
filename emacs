@@ -52,9 +52,7 @@
 
                      w3m
 
-                     symon
-
-                     wakatime-mode))
+                     symon))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -115,6 +113,10 @@
 (setq tab-stop-list (number-sequence 2 200 2))
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(js2-basic-offset 2)
  '(js2-bounce-indent-p t)
  '(wakatime-cli-path "/usr/local/bin/wakatime"))
@@ -146,6 +148,8 @@
 
 (set-frame-parameter (selected-frame) 'alpha '(97 97))
 (add-to-list 'default-frame-alist '(alpha 97 97))
+
+(windmove-default-keybindings)
 
 
 ;; ----
@@ -282,6 +286,9 @@
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 
+(add-hook 'clojure-mode-hook '(lambda () (local-set-key (kbd "C-c SPC") 'ace-jump-mode)))
+
+
 
 ;; --------
 ;; web mode
@@ -405,4 +412,4 @@
 ;; wakatime
 ;; --------
 
-(global-wakatime-mode)
+; (global-wakatime-mode)
