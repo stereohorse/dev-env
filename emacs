@@ -59,6 +59,8 @@
 
                      go-mode
                      
+                     symon
+
                      wakatime-mode))
 
 (unless package-archive-contents
@@ -328,6 +330,7 @@
 
 (require 'js2-refactor)
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
+(add-hook 'web-mode-hook #'js2-refactor-mode)
 
 
 ;; --------
@@ -353,6 +356,7 @@
 ;; ----
 
 (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+(add-hook 'web-mode-hook (lambda () (tern-mode t)))
 
 
 ;; -------------
