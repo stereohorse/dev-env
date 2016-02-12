@@ -47,10 +47,19 @@
                      tern
                      company-tern
                      nodejs-repl
+                     emmet-mode
 
                      flycheck
 
-                     w3m))
+                     w3m
+
+                     markdown-mode
+
+                     symon
+
+                     go-mode
+                     
+                     wakatime-mode))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -111,8 +120,14 @@
 (setq tab-stop-list (number-sequence 2 200 2))
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(js2-basic-offset 2)
- '(js2-bounce-indent-p t))
+ '(js2-bounce-indent-p t)
+ '(wakatime-python-bin "/usr/local/bin/python")
+ '(wakatime-cli-path "/usr/local/bin/wakatime"))
 
 
 ;; --
@@ -141,6 +156,11 @@
 
 (set-frame-parameter (selected-frame) 'alpha '(97 97))
 (add-to-list 'default-frame-alist '(alpha 97 97))
+
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+
+(desktop-save-mode t)
 
 
 ;; ----
@@ -393,3 +413,38 @@
 (require 'w3m)
 
 (setq browse-url-browser-function 'w3m-browse-url)
+
+
+;; -----
+;; symon
+;; -----
+
+(require 'symon)
+(symon-mode)
+
+
+;; --------
+;; wakatime
+;; --------
+
+(global-wakatime-mode)
+
+
+;; -----
+;; emmet
+;; -----
+
+(add-hook 'sgml-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook  'emmet-mode)
+(add-hook 'web-mode-hook  'emmet-mode)
+
+
+;; --------
+;; markdown
+;; --------
+
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
