@@ -47,11 +47,18 @@
                      tern
                      company-tern
                      nodejs-repl
+                     emmet-mode
 
                      flycheck
 
                      w3m
 
+                     markdown-mode
+
+                     symon
+
+                     go-mode
+                     
                      symon))
 
 (unless package-archive-contents
@@ -119,6 +126,7 @@
  ;; If there is more than one, they won't work right.
  '(js2-basic-offset 2)
  '(js2-bounce-indent-p t)
+ '(wakatime-python-bin "/usr/local/bin/python")
  '(wakatime-cli-path "/usr/local/bin/wakatime"))
 
 
@@ -150,6 +158,11 @@
 (add-to-list 'default-frame-alist '(alpha 97 97))
 
 (windmove-default-keybindings)
+
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+
+(desktop-save-mode t)
 
 
 ;; ----
@@ -408,8 +421,37 @@
 
 (setq browse-url-browser-function 'w3m-browse-url)
 
+
+;; -----
+;; symon
+;; -----
+
+(require 'symon)
+(symon-mode)
+
+
 ;; --------
 ;; wakatime
 ;; --------
 
 ; (global-wakatime-mode)
+
+
+;; -----
+;; emmet
+;; -----
+
+(add-hook 'sgml-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook  'emmet-mode)
+(add-hook 'web-mode-hook  'emmet-mode)
+
+
+;; --------
+;; markdown
+;; --------
+
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
