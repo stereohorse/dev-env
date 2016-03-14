@@ -137,8 +137,6 @@
 (add-hook 'after-init-hook
           (lambda () (load-theme 'ample-flat t)))
 
-(global-font-lock-mode -1)
-
 (global-visual-line-mode t)
 
 (setq inhibit-splash-screen t)
