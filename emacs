@@ -58,6 +58,8 @@
                      symon
 
                      go-mode
+
+                     yaml-mode
                      
                      symon))
 
