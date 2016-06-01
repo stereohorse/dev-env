@@ -55,8 +55,6 @@
 
                      markdown-mode
 
-                     symon
-
                      go-mode
 
                      lua-mode
@@ -66,6 +64,8 @@
                      adoc-mode
 
                      protobuf-mode
+
+                     yaml-mode
                      
                      symon))
 
