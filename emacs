@@ -58,6 +58,14 @@
                      symon
 
                      go-mode
+
+                     lua-mode
+
+                     rust-mode
+
+                     adoc-mode
+
+                     protobuf-mode
                      
                      symon))
 
@@ -133,6 +141,8 @@
 ;; --
 ;; ui
 ;; --
+
+(setq initial-scratch-message "")
 
 (add-hook 'after-init-hook
           (lambda () (load-theme 'ample-flat t)))
@@ -454,3 +464,12 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+
+;; ----------
+;; rust racer
+;; ----------
+
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'racer-mode-hook #'company-mode)
