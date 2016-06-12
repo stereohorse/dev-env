@@ -10,34 +10,38 @@
 (package-initialize)
 
 
-(setq package-list '(helm
-                     helm-ag
+(setq package-list '(exec-path-from-shell
+
+                     solarized-theme
+
                      projectile
+
+                     helm
+                     helm-ag
                      helm-projectile
-                     exec-path-from-shell
-                     
+
+                     ag
+
                      magit
+
                      company
+                     flycheck
 
                      expand-region
 
-                     multi-term
-
                      smart-mode-line
-                     
+
                      ace-jump-mode
-                     neotree
                      multiple-cursors
-                     
-                     rainbow-delimiters
-                     cider
+
                      smartparens
+                     rainbow-delimiters
+
+                     neotree
+
+                     cider
                      clj-refactor
 
-                     geiser
-                     
-                     ample-theme
-                     
                      elpy
 
                      json-mode
@@ -49,25 +53,13 @@
                      nodejs-repl
                      emmet-mode
 
-                     flycheck
-
                      w3m
 
                      markdown-mode
-
-                     go-mode
-
                      lua-mode
-
-                     rust-mode
-
                      adoc-mode
-
                      protobuf-mode
-
-                     yaml-mode
-                     
-                     symon))
+                     yaml-mode))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -75,6 +67,19 @@
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
+
+
+;; -----------
+;; custom vars
+;; -----------
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(js2-basic-offset 2)
+ '(js2-bounce-indent-p t))
 
 
 ;; -----
@@ -85,11 +90,24 @@
   (exec-path-from-shell-initialize))
 
 
+;; ----------
+;; projectile
+;; ----------
+
+(projectile-global-mode)
+(setq projectile-enable-caching t)
+
+
 ;; ----
 ;; helm
 ;; ----
 
 (require 'helm-config)
+(require 'helm-projectile)
+
+(helm-projectile-on)
+(setq projectile-completion-system 'helm)
+(setq projectile-switch-project-action 'helm-projectile)
 
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "M-x") 'helm-M-x)
@@ -99,22 +117,6 @@
       helm-recentf-fuzzy-match    t)
 
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-
-(when (executable-find "ack-grep")
-  (setq helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
-        helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
-
-
-;; ----------
-;; projectile
-;; ----------
-
-(projectile-global-mode)
-(setq projectile-enable-caching t)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
-
-(setq projectile-switch-project-action 'helm-projectile)
 
 
 ;; -----------
@@ -127,16 +129,6 @@
 
 (setq tab-stop-list (number-sequence 2 200 2))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(js2-basic-offset 2)
- '(js2-bounce-indent-p t)
- '(wakatime-python-bin "/usr/local/bin/python")
- '(wakatime-cli-path "/usr/local/bin/wakatime"))
-
 
 ;; --
 ;; ui
@@ -145,7 +137,7 @@
 (setq initial-scratch-message "")
 
 (add-hook 'after-init-hook
-          (lambda () (load-theme 'ample-flat t)))
+          (lambda () (load-theme 'solarized-dark t)))
 
 (global-visual-line-mode t)
 
@@ -432,21 +424,6 @@
 
 
 ;; -----
-;; symon
-;; -----
-
-(require 'symon)
-(symon-mode)
-
-
-;; --------
-;; wakatime
-;; --------
-
-; (global-wakatime-mode)
-
-
-;; -----
 ;; emmet
 ;; -----
 
@@ -464,12 +441,3 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
-
-;; ----------
-;; rust racer
-;; ----------
-
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
-(add-hook 'racer-mode-hook #'company-mode)
