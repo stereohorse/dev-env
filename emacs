@@ -12,7 +12,7 @@
 
 (setq package-list '(exec-path-from-shell
 
-                     solarized-theme
+                     cyberpunk-theme
 
                      projectile
 
@@ -137,7 +137,7 @@
 (setq initial-scratch-message "")
 
 (add-hook 'after-init-hook
-          (lambda () (load-theme 'solarized-dark t)))
+          (lambda () (load-theme 'cyberpunk t)))
 
 (global-visual-line-mode t)
 
