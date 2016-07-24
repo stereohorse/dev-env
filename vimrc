@@ -22,6 +22,7 @@ Plugin 'tpope/vim-salve'
 Plugin 'tpope/vim-dispatch'
 Plugin 'guns/vim-clojure-static'
 Plugin 'kien/rainbow_parentheses.vim'
+Bundle 'venantius/vim-cljfmt'
 
 
 " vcs
@@ -67,10 +68,25 @@ filetype plugin indent on
 
 set backspace=indent,eol,start
 set laststatus=2
+
+
+" line numbers
 set number
+au FocusLost * :set number
+au FocusGained * :set relativenumber
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+
 
 "syntax on
 filetype plugin indent on
+
+
+" hardmode!
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 
 " ---------------
