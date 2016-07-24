@@ -69,18 +69,11 @@ filetype plugin indent on
 set backspace=indent,eol,start
 set laststatus=2
 
-
 " line numbers
-set number
-au FocusLost * :set number
-au FocusGained * :set relativenumber
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
-
+set relativenumber
 
 "syntax on
 filetype plugin indent on
-
 
 " hardmode!
 noremap <Up> <NOP>
