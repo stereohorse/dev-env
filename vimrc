@@ -16,6 +16,10 @@ Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-surround'
 
 
+" asciidoc
+Plugin 'asciidoc/vim-asciidoc'
+
+
 " clojure
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-salve'
@@ -51,6 +55,11 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+
+" general
+Plugin 'tmux-plugins/vim-tmux-focus-events'
+Plugin 'tpope/vim-sensible'
+
 Bundle 'edkolev/tmuxline.vim'
 
 
@@ -61,6 +70,8 @@ Plugin 'VundleVim/Vundle.vim'
 call vundle#end()
 filetype plugin indent on
 
+runtime! plugin/sensible.vim
+
 
 " ---
 " l&f
@@ -68,6 +79,8 @@ filetype plugin indent on
 
 set backspace=indent,eol,start
 set laststatus=2
+
+set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 
 " line numbers
 set relativenumber
@@ -92,6 +105,8 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " ------
 " syntax
 " ------
+
+syntax off
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}

@@ -2,15 +2,16 @@
 # pbcopy
 # ------
 
-set-option -g default-command "reattach-to-user-namespace -l zsh"
+#set-option -g default-command "reattach-to-user-namespace -l zsh"
 
 bind-key -t vi-copy v begin-selection
-bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
 
-unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+#bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
 
-bind ] run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
+#unbind -t vi-copy Enter
+#bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+
+#bind ] run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
 
 
 # -----------
@@ -24,7 +25,6 @@ setw -g mode-keys vi
 # l&f
 # ---
 
-set -g default-terminal "screen-256color"
 set -g status off
 
 set-option -g allow-rename off
@@ -53,17 +53,32 @@ unbind C-b
 set -g prefix C-Space
 bind Space send-prefix
 
-# panes navigation
 
-bind -n M-Left select-pane -L
-bind -n M-Right select-pane -R
-bind -n M-Up select-pane -U
-bind -n M-Down select-pane -D
+# -------
+# plugins
+# -------
 
-# resize panes
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'tmux-plugins/tmux-open'
+set -g @plugin 'tmux-plugins/tmux-sidebar'
+set -g @plugin 'tmux-plugins/tmux-copycat'
+set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'tmux-plugins/tmux-open'
+set -g @plugin 'tmux-plugins/tmux-urlview'
+set -g @plugin 'tmux-plugins/tmux-logging'
+set -g @plugin 'tmux-plugins/tmux-pain-control'
+set -g @plugin 'tmux-plugins/tmux-sessionist'
+set -g @plugin 'jbnicolai/tmux-fpp'
 
-bind-key -r J resize-pane -D 5
-bind-key -r K resize-pane -U 5
-bind-key -r H resize-pane -L 5
-bind-key -r L resize-pane -R 5
+run '~/.tmux/plugins/tpm/tpm'
 
+# yank
+set -g @shell_mode 'vi'
+
+# continuum
+set -g @continuum-boot 'on'
+set -g @continuum-restore 'on'
+set -g @continuum-boot-options 'iterm,fullscreen'
