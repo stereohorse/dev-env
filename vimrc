@@ -60,6 +60,9 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'tpope/vim-sensible'
 
+
+" l&f
+Bundle 'edkolev/promptline.vim'
 Bundle 'edkolev/tmuxline.vim'
 
 
@@ -77,9 +80,6 @@ runtime! plugin/sensible.vim
 " l&f
 " ---
 
-set backspace=indent,eol,start
-set laststatus=2
-
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 
 " line numbers
@@ -93,6 +93,10 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tmuxline#enabled = 0
 
 
 " ---------------
