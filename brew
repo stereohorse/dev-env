@@ -23,6 +23,7 @@ gnupg
 gnupg2
 guile
 highlight
+htop
 httpie
 leiningen
 libcaca
