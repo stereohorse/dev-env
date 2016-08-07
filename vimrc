@@ -139,7 +139,6 @@ au Syntax * RainbowParenthesesLoadBraces
 
 let g:promptline_preset = {
       \'b':    [ promptline#slices#cwd() ],
-      \'x':    [ promptline#slices#git_status() ],
-      \'y':    [ promptline#slices#vcs_branch() ],
-      \'z':    [ '%*' ],
+      \'y':    [ promptline#slices#git_status() ],
+      \'z':    [ promptline#slices#vcs_branch() ],
       \'warn': [ promptline#slices#last_exit_code() ]}
