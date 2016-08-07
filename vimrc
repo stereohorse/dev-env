@@ -97,6 +97,7 @@ noremap <Right> <NOP>
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
+let g:airline_theme='jellybeans'
 
 
 " ---------------
@@ -130,3 +131,15 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+
+" ----------
+" promptline
+" ----------
+
+let g:promptline_preset = {
+      \'b':    [ promptline#slices#cwd() ],
+      \'x':    [ promptline#slices#git_status() ],
+      \'y':    [ promptline#slices#vcs_branch() ],
+      \'z':    [ '%*' ],
+      \'warn': [ promptline#slices#last_exit_code() ]}
