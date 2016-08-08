@@ -142,7 +142,8 @@ au Syntax * RainbowParenthesesLoadBraces
 " ----------
 
 let g:promptline_preset = {
-      \'b':    [ promptline#slices#cwd() ],
+      \'b':    [ promptline#slices#cwd({ 'dir_limit': 1 }) ],
+      \'x':    [ promptline#slices#python_virtualenv() ],
       \'y':    [ promptline#slices#git_status() ],
       \'z':    [ promptline#slices#vcs_branch() ],
       \'warn': [ promptline#slices#last_exit_code() ]}
