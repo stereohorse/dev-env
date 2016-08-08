@@ -20,6 +20,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'asciidoc/vim-asciidoc'
 
 
+" markdown
+Plugin 'suan/vim-instant-markdown'
+
+
 " clojure
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-salve'
