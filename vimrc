@@ -33,6 +33,12 @@ Plugin 'kien/rainbow_parentheses.vim'
 Bundle 'venantius/vim-cljfmt'
 
 
+" python
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'nvie/vim-flake8'
+Plugin 'klen/python-mode'
+
+
 " vcs
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
@@ -63,6 +69,8 @@ Plugin 'vim-airline/vim-airline-themes'
 " general
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'tpope/vim-sensible'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'Valloric/YouCompleteMe'
 
 
 " l&f
@@ -86,6 +94,8 @@ runtime! plugin/sensible.vim
 
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 
+set nofoldenable 
+
 " line numbers
 set relativenumber
 
@@ -102,6 +112,9 @@ noremap <Right> <NOP>
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline_theme='jellybeans'
+
+" clipboard
+set clipboard=unnamed
 
 
 " ---------------
@@ -137,6 +150,23 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 
+" ------
+" python
+" ------
+
+" venv
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+let python_highlight_all=1
+
+
 " ----------
 " promptline
 " ----------
@@ -147,3 +177,11 @@ let g:promptline_preset = {
       \'y':    [ promptline#slices#git_status() ],
       \'z':    [ promptline#slices#vcs_branch() ],
       \'warn': [ promptline#slices#last_exit_code() ]}
+
+
+" --------------------
+" per-project settings
+" --------------------
+
+set exrc
+set secure
