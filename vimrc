@@ -172,7 +172,7 @@ let python_highlight_all=1
 " ----------
 
 let g:promptline_preset = {
-      \'b':    [ promptline#slices#cwd({ 'dir_limit': 1 }) ],
+      \'b':    [ '$(echo ${PWD##*/})' ],
       \'x':    [ promptline#slices#python_virtualenv() ],
       \'y':    [ promptline#slices#git_status() ],
       \'z':    [ promptline#slices#vcs_branch() ],
