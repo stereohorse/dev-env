@@ -59,6 +59,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " colors
 Plugin 'flazz/vim-colorschemes'
+Plugin 'w0ng/vim-hybrid'
 
 
 " status line
@@ -94,12 +95,16 @@ runtime! plugin/sensible.vim
 
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 
+set background=dark
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
+colorscheme hybrid
+
 set nofoldenable 
 
 " line numbers
 set relativenumber
 
-"syntax on
 filetype plugin indent on
 
 " hardmode!
