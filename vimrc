@@ -72,6 +72,8 @@ Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'tpope/vim-sensible'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'xolox/vim-notes'
+Plugin 'xolox/vim-misc'
 
 
 " l&f
