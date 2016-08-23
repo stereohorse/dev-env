@@ -103,6 +103,7 @@ let g:hybrid_reduced_contrast = 1
 colorscheme hybrid
 
 set nofoldenable 
+set hidden
 
 " line numbers
 set relativenumber
