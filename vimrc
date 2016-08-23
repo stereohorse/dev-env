@@ -110,6 +110,10 @@ set relativenumber
 
 filetype plugin indent on
 
+" buffers
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprevious<CR>
+
 " hardmode!
 noremap <Up> <NOP>
 noremap <Down> <NOP>
