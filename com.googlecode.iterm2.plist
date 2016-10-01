@@ -31199,12 +31199,8 @@
 	<false/>
 	<key>NSColorPanelMode</key>
 	<string>6</string>
-	<key>NSColorPickerSlidersDefaults</key>
-	<string>1</string>
-	<key>NSFontPanelAttributes</key>
-	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Downloads</string>
+	<string>~/work/proj/self/emacs-config</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 459}</string>
 	<key>NSNavPanelExpandedSizeForSaveMode</key>
@@ -31228,7 +31224,7 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>322</string>
+		<string>307</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
@@ -31239,20 +31235,30 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSWindow Frame NSColorPanel</key>
+	<string>1020 193 224 325 0 0 2560 1417 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>586 83 628 94 0 0 1280 777 </string>
+	<string>411 511 445 77 0 0 1440 900 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>564 310 606 456 0 0 1280 777 </string>
+	<string>114 410 606 456 0 0 1440 877 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>511 448 400 129 0 0 1440 877 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>330 289 620 392 0 0 1280 777 </string>
+	<string>410 364 620 392 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>333 200 796 473 0 0 1280 777 </string>
+	<string>738 250 796 473 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>65 53 1130 707 0 0 1280 777 </string>
+	<string>0 170 1130 707 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>114 5 1130 707 0 0 1280 800 </string>
+	<string>113 62 1270 707 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>16 68 1130 707 0 0 1280 800 </string>
+	<string>18 311 1270 707 0 0 2560 1417 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>1483 974 934 153 0 0 2560 1440 </string>
+	<key>NSWindow Frame iTerm Window 4</key>
+	<string>15 1160 892 181 0 0 2560 1417 </string>
+	<key>NSWindow Frame iTerm Window 5</key>
+	<string>1040 328 1270 706 0 0 2560 1417 </string>
 	<key>NeverWarnAboutShortLivedSessions_11D368DC-C856-4B3C-A1F5-46B0F15FF955</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -32845,8 +32851,6 @@
 			<string>/Users/stereohorse</string>
 		</dict>
 	</array>
-	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
-	<true/>
 	<key>NoSyncConfirmBeta</key>
 	<true/>
 	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
@@ -32856,17 +32860,17 @@
 	<key>NoSyncHaveShownPromoWithId_4</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>46198A22-9299-4713-A3B9-9B9AF8952136</string>
+	<string>C30110F1-22B7-4058-9400-F203C96C3E2F</string>
 	<key>NoSyncLastTipTime</key>
-	<real>491423084.69622499</real>
+	<real>490792913.33396</real>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>486497132.09730899</real>
+	<real>486995518.04723299</real>
 	<key>NoSyncTimeOfLastPromo</key>
-	<real>477824951.69478703</real>
+	<real>477585624.71159899</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>485977977.45692199</real>
+	<real>486985137.52758998</real>
 	<key>NoSyncTipsDisabled</key>
 	<true/>
 	<key>NoSyncTipsToNotShow</key>
@@ -32882,16 +32886,6 @@
 		<string>0007</string>
 		<string>0008</string>
 		<string>0009</string>
-		<string>0010</string>
-		<string>0011</string>
-		<string>0012</string>
-		<string>0013</string>
-		<string>0014</string>
-		<string>0015</string>
-		<string>0016</string>
-		<string>0017</string>
-		<string>0018</string>
-		<string>0019</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -32953,11 +32947,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final.xml?shard=50</string>
+	<string>https://iterm2.com/appcasts/final.xml?shard=37</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-08-11T05:41:16Z</date>
+	<date>2016-09-02T12:41:53Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -33008,8 +33002,12 @@
 	<integer>0</integer>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
+	<key>findIgnoreCase_iTerm</key>
+	<true/>
+	<key>findRegex_iTerm</key>
+	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.5</string>
+	<string>3.0.7</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
