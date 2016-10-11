@@ -33,6 +33,11 @@ Plugin 'kien/rainbow_parentheses.vim'
 Bundle 'venantius/vim-cljfmt'
 
 
+" js
+Plugin 'ternjs/tern_for_vim'
+Plugin 'pangloss/vim-javascript'
+
+
 " python
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
@@ -52,6 +57,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-vinegar'
 
 
 " files tree
@@ -129,6 +135,10 @@ let g:airline_theme='jellybeans'
 
 " clipboard
 set clipboard=unnamed
+
+" nerdtree
+nnoremap <F8> :NERDTree<CR>
+nmap <silent> <F5> :NERDTreeToggle<CR>
 
 
 " ---------------
