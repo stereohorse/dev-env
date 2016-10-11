@@ -1,7 +1,5 @@
-android-sdk
 ansible
 ansifilter
-ant
 aria2
 asciidoc
 asciinema
@@ -13,10 +11,9 @@ cntlm
 coreutils
 cppcheck
 elinks
-d12frosted/emacs-plus/emacs-plus
 fortune
-homebrew/x11/fox
 fpp
+fzf
 gcc
 gist
 gnupg
@@ -46,7 +43,7 @@ homebrew/science/r
 ranger
 reattach-to-user-namespace
 rename
-sbt
+ripgrep
 sdl_image
 sdl_mixer
 sdl_ttf
@@ -57,7 +54,3 @@ tree
 unrar
 urlview
 w3m
-watch
-wget
-wrk
-zsh
