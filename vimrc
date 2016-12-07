@@ -20,6 +20,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'asciidoc/vim-asciidoc'
 
 
+" vue
+Plugin 'posva/vim-vue'
+
+
 " markdown
 Plugin 'suan/vim-instant-markdown'
 
@@ -33,9 +37,15 @@ Plugin 'kien/rainbow_parentheses.vim'
 Bundle 'venantius/vim-cljfmt'
 
 
+" solidity
+Plugin 'tomlion/vim-solidity'
+
+
 " js
 Plugin 'ternjs/tern_for_vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'elzr/vim-json'
+Plugin 'mattn/emmet-vim'
 
 
 " python
@@ -57,8 +67,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
-Plugin 'tpope/vim-vinegar'
-
+Plugin 'jeetsukumaran/vim-filebeagle'
 
 " files tree
 Plugin 'scrooloose/nerdtree'
@@ -82,6 +91,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'xolox/vim-notes'
 Plugin 'xolox/vim-misc'
+Plugin 'wakatime/vim-wakatime'
 
 
 " l&f
@@ -140,6 +150,9 @@ set clipboard=unnamed
 nnoremap <F8> :NERDTree<CR>
 nmap <silent> <F5> :NERDTreeToggle<CR>
 
+" fzf
+set rtp+=/usr/local/opt/fzf
+
 
 " ---------------
 " silver_searcher
@@ -152,8 +165,6 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " syntax
 " ------
 
-syntax off
-
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -164,6 +175,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 
+" syntax rules
+au BufReadPost *.json.j2 set syntax=json
+
+
 " -------
 " clojure
 " -------
@@ -172,6 +187,16 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+
+" -----
+" OCaml
+" -----
+
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+
+set rtp^="/Users/stereohorse/.opam/system/share/ocp-indent/vim"
 
 
 " ----------
@@ -192,3 +217,10 @@ let g:promptline_preset = {
 
 set exrc
 set secure
+
+" -----
+" emmet
+" -----
+
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,vue,jsx EmmetInstall
