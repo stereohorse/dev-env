@@ -94,6 +94,11 @@ Plugin 'xolox/vim-misc'
 Plugin 'wakatime/vim-wakatime'
 
 
+" writing
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+
+
 " l&f
 Bundle 'edkolev/promptline.vim'
 Bundle 'edkolev/tmuxline.vim'
@@ -218,9 +223,18 @@ let g:promptline_preset = {
 set exrc
 set secure
 
+
 " -----
 " emmet
 " -----
 
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,vue,jsx EmmetInstall
+
+
+" ----
+" goyo
+" ----
+
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
