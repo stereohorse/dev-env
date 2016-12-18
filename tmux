@@ -61,6 +61,9 @@ bind Space send-prefix
 # visual selection
 bind-key -t vi-copy v begin-selection
 
+# switch layouts
+bind-key Space next-layout
+
 
 # -------
 # plugins
