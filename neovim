@@ -1,0 +1,105 @@
+" --------
+" vim-plug
+" --------
+
+call plug#begin('~/.vim/plugged')
+
+
+" reset all
+Plug 'tpope/vim-sensible'
+
+" l&f
+Plug 'mhinz/vim-startify'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" vcs
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/gitv'
+
+" search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" navigation
+Plug 'easymotion/vim-easymotion'
+
+" general text editing
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'wakatime/vim-wakatime'
+
+" clojure
+Plug 'clojure-vim/async-clj-omni'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-salve'
+Plug 'tpope/vim-dispatch'
+Plug 'guns/vim-clojure-static'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'venantius/vim-cljfmt'
+Plug 'venantius/vim-eastwood'
+
+" writing
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
+
+call plug#end()
+
+
+" ---
+" l&f
+" ---
+
+runtime! plugin/sensible.vim " override vim-sensible defaults
+
+set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
+
+syntax enable
+
+filetype plugin indent on
+
+set background=dark
+colorscheme solarized
+
+set hidden
+set nofoldenable
+
+set encoding=utf8
+
+set clipboard=unnamed
+
+let mapleader=","
+
+" buffers
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprevious<CR>
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tmuxline#enabled = 0
+let g:airline_theme='jellybeans'
+
+
+" --------
+" deoplete
+" --------
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+
+
+" ----
+" goyo
+" ----
+
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!

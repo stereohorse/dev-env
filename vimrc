@@ -13,10 +13,10 @@ call vundle#begin()
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-surround'
 
 
 " asciidoc
@@ -108,6 +108,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'jpalardy/vim-slime'
 Plugin 'tpope/vim-repeat'
+
 
 " writing
 Plugin 'junegunn/goyo.vim'
