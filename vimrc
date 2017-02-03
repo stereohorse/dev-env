@@ -14,6 +14,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-surround'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+Plugin 'guns/vim-sexp'
 
 
 " asciidoc
@@ -35,6 +38,15 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'guns/vim-clojure-static'
 Plugin 'kien/rainbow_parentheses.vim'
 Bundle 'venantius/vim-cljfmt'
+Bundle 'venantius/vim-eastwood'
+
+
+" racket
+Plugin 'wlangstroth/vim-racket'
+
+
+" go
+Plugin 'fatih/vim-go'
 
 
 " solidity
@@ -58,6 +70,7 @@ Plugin 'davidhalter/jedi-vim'
 " vcs
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'gregsexton/gitv'
 
 
 " search
@@ -68,6 +81,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
 Plugin 'jeetsukumaran/vim-filebeagle'
+
 
 " files tree
 Plugin 'scrooloose/nerdtree'
@@ -92,7 +106,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'xolox/vim-notes'
 Plugin 'xolox/vim-misc'
 Plugin 'wakatime/vim-wakatime'
-
+Plugin 'jpalardy/vim-slime'
+Plugin 'tpope/vim-repeat'
 
 " writing
 Plugin 'junegunn/goyo.vim'
@@ -125,7 +140,7 @@ let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 colorscheme hybrid
 
-set nofoldenable 
+set nofoldenable
 set hidden
 
 " line numbers
@@ -158,6 +173,9 @@ nmap <silent> <F5> :NERDTreeToggle<CR>
 " fzf
 set rtp+=/usr/local/opt/fzf
 
+" leader
+let mapleader=","
+
 
 " ---------------
 " silver_searcher
@@ -178,11 +196,12 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_racket_racket_checker = 1
 
 
 " syntax rules
 au BufReadPost *.json.j2 set syntax=json
-
+au BufNewFile,BufRead *.pxi set filetype=clojure
 
 " -------
 " clojure
@@ -192,6 +211,13 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+
+" ------
+" python
+" ------
+
+let g:jedi#show_call_signatures = "0"
 
 
 " -----
@@ -238,3 +264,10 @@ autocmd FileType html,css,vue,jsx EmmetInstall
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+
+" -----
+" slime
+" -----
+
+let g:slime_target = "tmux"
