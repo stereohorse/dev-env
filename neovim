@@ -112,18 +112,6 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
 
-" ----------
-" promptline
-" ----------
-
-let g:promptline_preset = {
-      \'b':    [ '$(echo ${PWD##*/})' ],
-      \'x':    [ promptline#slices#python_virtualenv() ],
-      \'y':    [ promptline#slices#git_status() ],
-      \'z':    [ promptline#slices#vcs_branch() ],
-      \'warn': [ promptline#slices#last_exit_code() ]}
-
-
 " ------
 " syntax
 " ------
