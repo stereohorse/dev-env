@@ -13,6 +13,8 @@ Plug 'mhinz/vim-startify'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/promptline.vim'
+Plug 'edkolev/tmuxline.vim'
 
 " vcs
 Plug 'tpope/vim-fugitive'
@@ -28,11 +30,14 @@ Plug 'easymotion/vim-easymotion'
 
 " general text editing
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'wakatime/vim-wakatime'
+Plug 'vim-syntastic/syntastic'
+Plug 'jeetsukumaran/vim-filebeagle'
 
 " clojure
 Plug 'clojure-vim/async-clj-omni'
@@ -60,8 +65,6 @@ call plug#end()
 
 runtime! plugin/sensible.vim " override vim-sensible defaults
 
-set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
-
 syntax enable
 
 filetype plugin indent on
@@ -87,6 +90,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline_theme='jellybeans'
 
+" indents
+
+set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
+
+autocmd FileType java,groovy setlocal shiftwidth=4 tabstop=4
+
 
 " --------
 " deoplete
@@ -103,3 +112,29 @@ let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+
+" ----------
+" promptline
+" ----------
+
+let g:promptline_preset = {
+      \'b':    [ '$(echo ${PWD##*/})' ],
+      \'x':    [ promptline#slices#python_virtualenv() ],
+      \'y':    [ promptline#slices#git_status() ],
+      \'z':    [ promptline#slices#vcs_branch() ],
+      \'warn': [ promptline#slices#last_exit_code() ]}
+
+
+" ------
+" syntax
+" ------
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
