@@ -13,8 +13,6 @@ Plug 'mhinz/vim-startify'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/promptline.vim'
-Plug 'edkolev/tmuxline.vim'
 
 " vcs
 Plug 'tpope/vim-fugitive'
