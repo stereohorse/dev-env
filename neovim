@@ -160,6 +160,8 @@ autocmd FileType html,css EmmetInstall
 " fzf
 " ---
 
+nnoremap <silent> <buffer> <C-f>f :FZF<cr>
+nnoremap <silent> <buffer> <C-f>w :Ag<cr>
 
 " ---------
 " vim files
