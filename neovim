@@ -49,6 +49,9 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'venantius/vim-cljfmt'
 Plug 'venantius/vim-eastwood'
 
+" js
+Plug 'mattn/emmet-vim'
+
 " writing
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -124,3 +127,18 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+
+" -----
+" emmet
+" -----
+
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+
+" ----
+" java
+" ----
+
+nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
