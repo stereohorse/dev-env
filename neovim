@@ -86,6 +86,17 @@ let mapleader=","
 :nnoremap <Tab> :bnext<CR>
 :nnoremap <S-Tab> :bprevious<CR>
 
+" redraw
+nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+
+" shifting
+xnoremap <  <gv
+xnoremap >  >gv
+
+" empty lines
+nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
@@ -141,4 +152,39 @@ autocmd FileType html,css EmmetInstall
 " java
 " ----
 
-nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
+:autocmd FileType java nnoremap <silent> <buffer> <leader>I :JavaImportOrganize<cr>
+:autocmd FileType java nnoremap <silent> <buffer> <leader>U :JUnit *<cr>
+
+
+" ---
+" fzf
+" ---
+
+
+" ---------
+" vim files
+" ---------
+
+if exists('*mkdir') && !isdirectory($HOME.'/.vim/files')
+  call mkdir($HOME.'/.vim/files')
+  call mkdir($HOME.'/.vim/files/backup')
+  call mkdir($HOME.'/.vim/files/swap')
+  call mkdir($HOME.'/.vim/files/undo')
+  call mkdir($HOME.'/.vim/files/info')
+endif
+
+set backup
+set backupdir   =$HOME/.vim/files/backup//
+set backupext   =-vimbackup
+set backupskip  =
+set directory   =$HOME/.vim/files/swap//
+set updatecount =100
+set undofile
+set undodir     =$HOME/.vim/files/undo//
+set viminfo     ='100,n$HOME/.vim/files/info/viminfo
+
+" jump to last cursor position
+autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
