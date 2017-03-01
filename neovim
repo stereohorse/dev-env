@@ -36,6 +36,18 @@ Plug 'tpope/vim-repeat'
 Plug 'wakatime/vim-wakatime'
 Plug 'vim-syntastic/syntastic'
 Plug 'jeetsukumaran/vim-filebeagle'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-eunuch'
+Plug 'justinmk/vim-sneak'
+Plug 'janko-m/vim-test'
+
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+Plug 'majutsushi/tagbar'
+
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 
 " clojure
 Plug 'clojure-vim/async-clj-omni'
@@ -55,6 +67,9 @@ Plug 'mattn/emmet-vim'
 " writing
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+
+" execution
+Plug 'thinca/vim-quickrun'
 
 
 call plug#end()
@@ -83,8 +98,8 @@ set clipboard=unnamed
 let mapleader=","
 
 " buffers
-:nnoremap <Tab> :bnext<CR>
-:nnoremap <S-Tab> :bprevious<CR>
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
 
 " redraw
 nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
@@ -103,10 +118,19 @@ let g:airline#extensions#tmuxline#enabled = 0
 let g:airline_theme='jellybeans'
 
 " indents
-
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
+au FileType java,groovy setlocal shiftwidth=4 tabstop=4
 
-autocmd FileType java,groovy setlocal shiftwidth=4 tabstop=4
+au BufEnter * EnableStripWhitespaceOnSave
+
+" execution
+nnoremap <F5> :QuickRun<cr>
+
+" navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 
 " --------
@@ -122,8 +146,19 @@ let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 " goyo
 " ----
 
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+au! User GoyoEnter Limelight
+au! User GoyoLeave Limelight!
+
+nnoremap <F3> :Goyo<CR>
+
+
+" --------
+" snippets
+" --------
+
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
 " ------
@@ -140,28 +175,48 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 
+" -------
+" folding
+" -------
+
+set foldmethod=syntax
+set nofoldenable
+
+nnoremap <Space> za
+
+
+" -------
+" tagging
+" -------
+
+nnoremap <F8> :TagbarToggle<CR>
+
+let g:easytags_async = 1
+
+
 " -----
 " emmet
 " -----
 
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-
-
-" ----
-" java
-" ----
-
-:autocmd FileType java nnoremap <silent> <buffer> <leader>I :JavaImportOrganize<cr>
-:autocmd FileType java nnoremap <silent> <buffer> <leader>U :JUnit *<cr>
+au FileType html,css EmmetInstall
 
 
 " ---
 " fzf
 " ---
 
-nnoremap <silent> <buffer> <C-f>f :FZF<cr>
-nnoremap <silent> <buffer> <C-f>w :Ag<cr>
+nnoremap <silent> <C-f>f :FZF<cr>
+nnoremap <silent> <C-f>w :Ag<cr>
+
+
+" ----------
+" file types
+" ----------
+
+au BufEnter Vagrantfile :setlocal filetype=ruby
+au BufEnter *.json.j2 :setlocal filetype=json
+
 
 " ---------
 " vim files
@@ -186,7 +241,7 @@ set undodir     =$HOME/.vim/files/undo//
 set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
 " jump to last cursor position
-autocmd BufReadPost *
+au BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
