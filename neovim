@@ -13,6 +13,8 @@ Plug 'mhinz/vim-startify'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'ryanoasis/vim-devicons'
 
 " vcs
 Plug 'tpope/vim-fugitive'
@@ -116,6 +118,8 @@ nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline_theme='jellybeans'
+let g:airline_powerline_fonts = 1
+
 
 " indents
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
@@ -192,6 +196,7 @@ nnoremap <Space> za
 nnoremap <F8> :TagbarToggle<CR>
 
 let g:easytags_async = 1
+let g:easytags_suppress_ctags_warning = 1
 
 
 " -----
