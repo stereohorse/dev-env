@@ -48,6 +48,8 @@ Plug 'majutsushi/tagbar'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+Plug 'metakirby5/codi.vim'
+
 
 " clojure
 Plug 'clojure-vim/async-clj-omni'
@@ -63,6 +65,9 @@ Plug 'venantius/vim-eastwood'
 
 " js
 Plug 'mattn/emmet-vim'
+
+" python
+Plug 'zchee/deoplete-jedi'
 
 " writing
 Plug 'junegunn/goyo.vim'
