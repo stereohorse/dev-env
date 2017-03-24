@@ -5,9 +5,6 @@
 call plug#begin('~/.vim/plugged')
 
 
-" reset all
-Plug 'tpope/vim-sensible'
-
 " l&f
 Plug 'mhinz/vim-startify'
 Plug 'altercation/vim-colors-solarized'
@@ -232,7 +229,8 @@ au BufEnter *.json.j2 :setlocal filetype=json
 " vim files
 " ---------
 
-if exists('*mkdir') && !isdirectory($HOME.'/.vim/files')
+if exists('*mkdir') && (!isdirectory($HOME.'/.vim') || !isdirectory($HOME.'/.vim/files'))
+  call mkdir($HOME.'/.vim')
   call mkdir($HOME.'/.vim/files')
   call mkdir($HOME.'/.vim/files/backup')
   call mkdir($HOME.'/.vim/files/swap')
