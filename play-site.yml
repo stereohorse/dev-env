@@ -113,6 +113,7 @@
         - intellij-idea
         - slack
         - dropbox
+        - flux
       tags: cask
 
     - name: install App Store programs
