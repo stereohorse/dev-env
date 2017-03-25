@@ -111,6 +111,8 @@
         - vagrant
         - atom
         - intellij-idea
+        - slack
+        - dropbox
       tags: cask
 
     - name: install App Store programs
@@ -159,4 +161,5 @@
 
     - name: install zsh highlight
       shell: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+      tags: zsh
 
