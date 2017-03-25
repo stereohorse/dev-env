@@ -122,6 +122,7 @@
         - xcode
         - '"Spark - Love"'
         - Keynote
+        - Pages
       tags: app-store
 
     - name: install nvm
