@@ -5,9 +5,6 @@
 call plug#begin('~/.vim/plugged')
 
 
-" reset all
-Plug 'tpope/vim-sensible'
-
 " l&f
 Plug 'mhinz/vim-startify'
 Plug 'altercation/vim-colors-solarized'
@@ -54,7 +51,7 @@ Plug 'metakirby5/codi.vim'
 
 
 " clojure
-Plug 'clojure-vim/async-clj-omni'
+"Plug 'clojure-vim/async-clj-omni'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-fireplace'
@@ -64,6 +61,10 @@ Plug 'guns/vim-clojure-static'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'venantius/vim-cljfmt'
 Plug 'venantius/vim-eastwood'
+
+" markdown
+Plug 'plasticboy/vim-markdown'
+Plug 'suan/vim-instant-markdown'
 
 " js
 Plug 'mattn/emmet-vim'
@@ -85,8 +86,6 @@ call plug#end()
 " ---
 " l&f
 " ---
-
-runtime! plugin/sensible.vim " override vim-sensible defaults
 
 syntax enable
 
@@ -147,8 +146,8 @@ nnoremap <C-H> <C-W><C-H>
 " --------
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#keyword_patterns = {}
-let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+"let g:deoplete#keyword_patterns = {}
+"let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 
 " ----
