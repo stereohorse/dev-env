@@ -21,13 +21,16 @@ bind '"' split-window -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
 bind c new-window -c "#{pane_current_path}"
 
+# hide status bar
+set -g status off
+bind-key -n F4 set -g status
+
 # airline theme
 
 set -g status-bg "colour234"
 set -g message-command-fg "colour231"
 set -g status-justify "left"
 set -g status-left-length "100"
-set -g status "on"
 set -g pane-active-border-fg "colour254"
 set -g message-bg "colour31"
 set -g status-right-length "100"
