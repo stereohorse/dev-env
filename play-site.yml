@@ -1,0 +1,167 @@
+- hosts: osx
+  tasks:
+    - name: install zsh
+      homebrew: name=zsh
+
+    - name: install oh-my-zsh
+      shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+    - name: install sdkman
+      shell: curl -s "https://get.sdkman.io" | bash
+
+    - name: instal sdks
+      shell: source ~/.zshrc && sdk install {{ item }}
+      with_items:
+        - java
+        - gradle
+
+    - name: install homebrew packages
+      homebrew: name={{ item }}
+      with_items:
+        - ansifilter
+        - aria2
+        - asciidoc
+        - asciinema
+        - atool
+        - boost-python
+        - boot-clj
+        - facebook/fb/buck
+        - carthage
+        - chicken
+        - clog
+        - cntlm
+        - coreutils
+        - cppcheck
+        - ctags
+        - dwarf-fortress
+        - ffmpeg
+        - fortune
+        - fpp
+        - fzf
+        - gcc
+        - gist
+        - glide
+        - gnupg
+        - gnupg2
+        - goaccess
+        - guile
+        - haskell-stack
+        - highlight
+        - htop
+        - httpie
+        - hugo
+        - ideviceinstaller
+        - irssi
+        - jq
+        - libcaca
+        - media-info
+        - mercurial
+        - mit-scheme
+        - multirust
+        - neovim/neovim/neovim
+        - nethack
+        - mas
+        - opam
+        - packer
+        - planck
+        - plantuml
+        - portmidi
+        - protobuf
+        - python
+        - python3
+        - homebrew/science/r
+        - ranger
+        - reattach-to-user-namespace
+        - rename
+        - ripgrep
+        - ruby
+        - sdl_image
+        - sdl_mixer
+        - sdl_ttf
+        - source-highlight
+        - taskd
+        - tasksh
+        - the_silver_searcher
+        - timewarrior
+        - tmux
+        - tree
+        - unrar
+        - urlview
+        - utf8proc
+        - vegeta
+        - w3m
+        - watch
+        - watchman
+        - zsh
+
+    - name: install homebrew cask
+      shell: brew tap caskroom/cask
+      tags: cask
+
+    - name: install casks
+      shell: brew cask install {{ item }}
+      with_items:
+        - iterm2
+        - alfred
+        - telegram
+        - google-chrome
+        - evernote
+        - docker
+        - virtualbox
+        - vagrant
+        - atom
+        - intellij-idea
+        - slack
+        - dropbox
+        - flux
+      tags: cask
+
+    - name: install App Store programs
+      shell: mas install $(mas search {{ item }} | head -n 1 | awk '{print $1}')
+      with_items:
+        - xcode
+        - '"Spark - Love"'
+        - Keynote
+        - Pages
+      tags: app-store
+
+    - name: install nvm
+      shell: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
+      tags: node
+
+    - name: install nodejs
+      shell: source ~/.zshrc && nvm install stable && nvm alias default stable
+      tags: node
+
+    - name: install pure prompt
+      shell: npm install --global pure-prompt
+      tags: pure
+
+    - name: install vim-plug
+      shell: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      tags: vim-plug
+
+    - name: install tpm
+      shell: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+      tags: tpm
+
+    - name: create neovim config dir
+      file: path=~/.config/nvim state=directory recurse=yes
+      tags: nvim
+
+    - name: install neovim for py2
+      pip: name=neovim
+      tags: nvim
+
+    - name: install neovim for py3
+      pip: name=neovim executable=pip3
+      tags: nvim
+
+    - name: install nerd fonts
+      shell: cd /tmp && git clone --depth 1 git@github.com:ryanoasis/nerd-fonts.git && cd nerd-fonts && ./install.sh
+      tags: nerd-fonts
+
+    - name: install zsh highlight
+      shell: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+      tags: zsh
+
