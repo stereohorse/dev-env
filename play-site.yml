@@ -114,6 +114,7 @@
         - slack
         - dropbox
         - flux
+        - viber
       tags: cask
 
     - name: install App Store programs
