@@ -115,6 +115,7 @@
         - dropbox
         - flux
         - viber
+        - teamviewer
       tags: cask
 
     - name: install App Store programs
