@@ -88,6 +88,9 @@ source $ZSH/oh-my-zsh.sh
 alias vi='nvim'
 alias vim='nvim'
 
+# docker compose
+alias dc='docker-compose'
+
 # git
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 
@@ -97,6 +100,10 @@ alias play='ansible-playbook'
 # load pure prompt
 autoload -U promptinit; promptinit
 prompt pure
+
+# setup highlighter
+ZSH_HIGHLIGHT_STYLES[path]=none
+
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/stereohorse/.sdkman"
