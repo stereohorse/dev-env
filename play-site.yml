@@ -72,6 +72,7 @@
         - homebrew/science/r
         - ranger
         - reattach-to-user-namespace
+        - wget
         - rename
         - ripgrep
         - ruby
