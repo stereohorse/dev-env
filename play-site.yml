@@ -117,6 +117,7 @@
         - flux
         - viber
         - teamviewer
+        - vlc
       tags: cask
 
     - name: install App Store programs
