@@ -177,4 +177,5 @@
       pip: name={{ item }}
       with_items:
         - haxor-news
+        - Pygments
       tags: pip
