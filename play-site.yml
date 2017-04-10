@@ -178,4 +178,5 @@
       with_items:
         - haxor-news
         - Pygments
+        - virtualenvwrapper
       tags: pip
