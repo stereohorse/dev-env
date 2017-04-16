@@ -85,6 +85,9 @@ alias tmux="tmux -2"
 # docker compose
 alias dc="docker-compose"
 
+# pygments
+alias pyg="pygmentize -g"
+
 # vim
 alias v="nvim"
 alias vi="nvim"
