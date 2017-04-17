@@ -70,6 +70,7 @@ Plug 'suan/vim-instant-markdown'
 
 " js
 Plug 'mattn/emmet-vim'
+Plug 'elzr/vim-json'
 
 " python
 Plug 'zchee/deoplete-jedi'

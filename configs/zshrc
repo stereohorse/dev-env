@@ -85,6 +85,9 @@ alias tmux="tmux -2"
 # docker compose
 alias dc="docker-compose"
 
+# pygments
+alias pyg="pygmentize -g"
+
 # vim
 alias v="nvim"
 alias vi="nvim"
@@ -120,6 +123,9 @@ export NVM_DIR="$HOME/.nvm"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+# hashicorp atlas settings
+[ -f ~/.atlas ] && source ~/.atlas
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/stereohorse/.sdkman"

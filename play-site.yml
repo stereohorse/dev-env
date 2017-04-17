@@ -117,6 +117,7 @@
         - flux
         - viber
         - teamviewer
+        - vlc
       tags: cask
 
     - name: install App Store programs
@@ -126,6 +127,7 @@
         - '"Spark - Love"'
         - Keynote
         - Pages
+        - '"Microsoft Remote Desktop"'
       tags: app-store
 
     - name: install nvm
@@ -176,4 +178,6 @@
       pip: name={{ item }}
       with_items:
         - haxor-news
+        - Pygments
+        - virtualenvwrapper
       tags: pip
