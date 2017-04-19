@@ -118,6 +118,7 @@
         - viber
         - teamviewer
         - vlc
+        - skype
       tags: cask
 
     - name: install App Store programs
