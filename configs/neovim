@@ -172,6 +172,10 @@ nnoremap <F3> :Goyo<CR>
 " ------
 
 let g:pymode_options_colorcolumn = 0
+let g:pymode_python = 'python3'
+
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 
 " --------
@@ -231,7 +235,12 @@ au FileType html,css EmmetInstall
 
 nnoremap <silent> <C-f>f :FZF<cr>
 nnoremap <silent> <C-f>w :Ag<cr>
-nnoremap <silent> <C-b>w :Buffers<cr>
+nnoremap <silent> <C-f>h :History<cr>
+nnoremap <silent> <C-f>c :Commits<cr>
+nnoremap <silent> <C-f>b :BCommits<cr>
+nnoremap <silent> <C-f>l :BLines<cr>
+nnoremap <silent> <C-f>m :Marks<cr>
+nnoremap <silent> <C-f>s :Snippets<cr>
 
 
 " ----------
