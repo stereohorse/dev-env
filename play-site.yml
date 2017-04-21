@@ -94,6 +94,8 @@
         - watch
         - watchman
         - zsh
+        - ansiweather
+        - zplug
 
     - name: install homebrew cask
       shell: brew tap caskroom/cask
