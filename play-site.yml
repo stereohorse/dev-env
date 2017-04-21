@@ -173,8 +173,8 @@
       shell: cd /tmp && git clone --depth 1 git@github.com:ryanoasis/nerd-fonts.git && cd nerd-fonts && ./install.sh
       tags: nerd-fonts
 
-    - name: install zsh highlight
-      shell: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    - name: install zplug
+      shell: curl -sL --proto-redir -all,https https://zplug.sh/installer | zsh<Paste>
       tags: zsh
 
     - name: install pip packages
