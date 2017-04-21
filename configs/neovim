@@ -75,7 +75,7 @@ Plug 'mattn/emmet-vim'
 Plug 'elzr/vim-json'
 
 " python
-Plug 'zchee/deoplete-jedi'
+Plug 'python-mode/python-mode'
 
 " writing
 Plug 'junegunn/goyo.vim'
