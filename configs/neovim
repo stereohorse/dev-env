@@ -12,6 +12,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'ryanoasis/vim-devicons'
+Plug 'zhaocai/GoldenView.Vim'
 
 " vcs
 Plug 'tpope/vim-fugitive'
@@ -48,6 +49,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'metakirby5/codi.vim'
+Plug 'benmills/vimux'
 
 Plug 'godlygeek/tabular'
 
@@ -165,6 +167,13 @@ au! User GoyoLeave Limelight!
 nnoremap <F3> :Goyo<CR>
 
 
+" ------
+" python
+" ------
+
+let g:pymode_options_colorcolumn = 0
+
+
 " --------
 " snippets
 " --------
@@ -222,6 +231,7 @@ au FileType html,css EmmetInstall
 
 nnoremap <silent> <C-f>f :FZF<cr>
 nnoremap <silent> <C-f>w :Ag<cr>
+nnoremap <silent> <C-b>w :Buffers<cr>
 
 
 " ----------
