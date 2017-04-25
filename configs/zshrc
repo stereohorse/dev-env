@@ -10,9 +10,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zplug/init.zsh
 
 zplug zplug/zplug, hook-build:'zplug --self-manage'
-zplug b4b4r07/enhancd, use:init.sh
 zplug wbinglee/zsh-wakatime
-zplug zsh-users/zsh-autosuggestions
 zplug zsh-users/zsh-syntax-highlighting, defer:2
 zplug mafredri/zsh-async
 zplug sindresorhus/pure, use:pure.zsh, as:theme
