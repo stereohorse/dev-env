@@ -73,5 +73,8 @@ export ENHANCD_FILTER=fzf
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=11'
 
+export GOPATH=~/work/proj/go
+export PATH=$PATH:$GOPATH/bin
+
 export SDKMAN_DIR="/Users/stereohorse/.sdkman"
 [[ -s "/Users/stereohorse/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/stereohorse/.sdkman/bin/sdkman-init.sh"

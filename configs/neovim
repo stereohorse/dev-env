@@ -68,6 +68,9 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'venantius/vim-cljfmt'
 Plug 'venantius/vim-eastwood'
 
+" go
+Plug 'fatih/vim-go'
+
 " markdown
 Plug 'plasticboy/vim-markdown'
 Plug 'suan/vim-instant-markdown'
