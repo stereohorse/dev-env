@@ -96,6 +96,7 @@ bind Space send-prefix
 
 # visual selection
 bind-key -Tcopy-mode-vi 'v' send -X begin-selection
+bind-key -Tcopy-mode-vi 'y' send -X copy-selection
 
 # switch layouts
 bind-key Space next-layout
