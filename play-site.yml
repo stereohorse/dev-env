@@ -60,6 +60,7 @@
         - multirust
         - neovim/neovim/neovim
         - nethack
+        - nomad
         - mas
         - opam
         - packer

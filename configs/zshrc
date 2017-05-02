@@ -10,9 +10,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zplug/init.zsh
 
 zplug zplug/zplug, hook-build:'zplug --self-manage'
-zplug b4b4r07/enhancd, use:init.sh
 zplug wbinglee/zsh-wakatime
-zplug zsh-users/zsh-autosuggestions
 zplug zsh-users/zsh-syntax-highlighting, defer:2
 zplug mafredri/zsh-async
 zplug sindresorhus/pure, use:pure.zsh, as:theme
@@ -74,6 +72,9 @@ export NVM_DIR="$HOME/.nvm"
 export ENHANCD_FILTER=fzf
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=11'
+
+export GOPATH=~/work/proj/go
+export PATH=$PATH:$GOPATH/bin
 
 export SDKMAN_DIR="/Users/stereohorse/.sdkman"
 [[ -s "/Users/stereohorse/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/stereohorse/.sdkman/bin/sdkman-init.sh"

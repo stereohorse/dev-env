@@ -72,6 +72,9 @@ Plug 'venantius/vim-eastwood'
 Plug 'plasticboy/vim-markdown'
 Plug 'suan/vim-instant-markdown'
 
+" go
+Plug 'fatih/vim-go'
+
 " js
 Plug 'mattn/emmet-vim'
 Plug 'elzr/vim-json'
@@ -176,6 +179,9 @@ let g:pymode_python = 'python3'
 
 let g:python_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
+
+" disable autodoc
+set completeopt=menu
 
 
 " --------
