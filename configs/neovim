@@ -77,6 +77,7 @@ Plug 'suan/vim-instant-markdown'
 
 " go
 Plug 'fatih/vim-go'
+Plug 'zchee/deoplete-go'
 
 " js
 Plug 'mattn/emmet-vim'
@@ -192,8 +193,6 @@ set completeopt=menu
 " --------
 
 let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
 " ------
