@@ -131,6 +131,7 @@
         - vlc
         - skype
         - processing
+        - spectacle
       tags: cask
 
     - name: install App Store programs
