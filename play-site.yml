@@ -130,6 +130,7 @@
         - teamviewer
         - vlc
         - skype
+        - processing
       tags: cask
 
     - name: install App Store programs
