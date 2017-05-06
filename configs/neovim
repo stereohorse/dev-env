@@ -55,6 +55,8 @@ Plug 'godlygeek/tabular'
 
 Plug 'terryma/vim-multiple-cursors'
 
+Plug 'vim-scripts/BufOnly.vim'
+
 
 " clojure
 "Plug 'clojure-vim/async-clj-omni'
@@ -193,6 +195,17 @@ set completeopt=menu
 " --------
 
 let g:UltiSnipsExpandTrigger="<c-e>"
+
+
+" --
+" go
+" --
+
+au FileType go nmap gt <Plug>(go-test)
+au FileType go nmap go <Plug>(go-doc)
+au FileType go nmap gi <Plug>(go-info)
+au FileType go nmap ga <Plug>(go-alternate-edit)
+au FileType go nmap gc <Plug>(go-coverage-toggle)
 
 
 " ------
