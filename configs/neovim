@@ -202,10 +202,11 @@ let g:UltiSnipsExpandTrigger="<c-e>"
 " --
 
 au FileType go nmap gt <Plug>(go-test)
-au FileType go nmap go <Plug>(go-doc)
+au FileType go nmap gD <Plug>(go-doc)
 au FileType go nmap gi <Plug>(go-info)
 au FileType go nmap ga <Plug>(go-alternate-edit)
 au FileType go nmap gc <Plug>(go-coverage-toggle)
+au FileType go nmap gr <Plug>(go-rename)
 
 
 " ------

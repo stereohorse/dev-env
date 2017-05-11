@@ -33,7 +33,6 @@
         - coreutils
         - cppcheck
         - ctags
-        - dwarf-fortress
         - ffmpeg
         - fortune
         - fpp
@@ -123,6 +122,7 @@
         - vagrant
         - atom
         - intellij-idea
+        - dwarf-fortress
         - slack
         - dropbox
         - flux
@@ -132,6 +132,7 @@
         - skype
         - processing
         - spectacle
+        - steam
       tags: cask
 
     - name: install App Store programs
@@ -158,6 +159,7 @@
       with_items:
         - pure-prompt
         - tldr
+        - instant-markdown-d
       tags: node
 
     - name: install vim-plug
