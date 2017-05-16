@@ -45,6 +45,10 @@ alias ti="timew"
 
 alias gst='git status'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+alias gd='git diff'
+alias gdc='git diff --cached'
+
+alias ast='ssh asteroid'
 
 # howdoi
 function h() {
