@@ -58,6 +58,15 @@ function h() {
 alias weather='ansiweather -l Moscow,RU -a false -d true'
 alias weatherforecast='ansiweather -l Moscow,RU -a false -d true -F'
 
+# toggle day/nigth mode
+function day() {
+  sed -i.bak 's/set background=dark/set background=light/' ~/.config/nvim/init.vim
+}
+
+function night() {
+  sed -i.bak 's/set background=light/set background=dark/' ~/.config/nvim/init.vim
+}
+
 
 # -- app settings
 

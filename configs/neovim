@@ -108,6 +108,8 @@ syntax enable
 filetype plugin indent on
 
 set background=dark
+nnoremap <F11> :let &background = ( &background == "dark"? "light" : "dark" )<cr>
+
 colorscheme solarized
 
 set hidden
