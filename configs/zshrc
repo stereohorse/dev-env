@@ -60,11 +60,13 @@ alias weatherforecast='ansiweather -l Moscow,RU -a false -d true -F'
 
 # toggle day/nigth mode
 function day() {
-  sed -i.bak 's/set background=dark/set background=light/' ~/.config/nvim/init.vim
+  sed -i.bak 's/set background=dark/set background=light/' $(readlink ~/.config/nvim/init.vim)
+  tmux source-file ~/.tmux.solarized.light
 }
 
 function night() {
-  sed -i.bak 's/set background=light/set background=dark/' ~/.config/nvim/init.vim
+  sed -i.bak 's/set background=light/set background=dark/' $(readlink ~/.config/nvim/init.vim)
+  tmux source-file ~/.tmux.solarized.dark
 }
 
 

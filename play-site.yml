@@ -198,3 +198,5 @@
         - Pygments
         - virtualenvwrapper
       tags: pip
+
+    # TODO: link configs & install plugins

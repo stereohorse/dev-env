@@ -6,3 +6,4 @@
 *.retry
 
 .DS_Store
+*.bak
