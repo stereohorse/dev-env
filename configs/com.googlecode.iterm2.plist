@@ -31622,7 +31622,7 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/work/proj/self/dev-env/configs</string>
+	<string>~/Downloads</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -31661,9 +31661,9 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>330 290 620 392 0 0 1280 778 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>491 225 1016 502 0 0 1680 1050 </string>
+	<string>516 308 918 498 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 4 1450 987 0 0 1680 1028 </string>
+	<string>0 4 1450 774 0 0 1280 778 </string>
 	<key>NeverWarnAboutShortLivedSessions_11D368DC-C856-4B3C-A1F5-46B0F15FF955</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -31834,8 +31834,6 @@
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
-			<key>Background Image Location</key>
-			<string></string>
 			<key>Badge Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -33244,7 +33242,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-04-16T12:08:59Z</date>
+	<date>2017-04-17T15:35:15Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
