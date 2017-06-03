@@ -77,6 +77,9 @@ Plug 'fatih/vim-go'
 Plug 'plasticboy/vim-markdown'
 Plug 'suan/vim-instant-markdown'
 
+" ruby
+Plug 'vim-ruby/vim-ruby'
+
 " go
 Plug 'fatih/vim-go'
 Plug 'zchee/deoplete-go'
