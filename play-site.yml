@@ -120,7 +120,6 @@
         - virtualbox
         - vagrant
         - atom
-        - intellij-idea
         - dwarf-fortress
         - slack
         - dropbox
@@ -132,6 +131,8 @@
         - processing
         - spectacle
         - steam
+        - microsoft-office
+        - jetbrains-toolbox
       tags: cask
 
     - name: install App Store programs

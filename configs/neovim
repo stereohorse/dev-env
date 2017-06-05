@@ -107,7 +107,7 @@ syntax enable
 
 filetype plugin indent on
 
-set background=dark
+set background=light
 nnoremap <F11> :let &background = ( &background == "dark"? "light" : "dark" )<cr>
 
 colorscheme solarized
@@ -172,10 +172,17 @@ let g:deoplete#enable_at_startup = 1
 " goyo
 " ----
 
-au! User GoyoEnter Limelight
-au! User GoyoLeave Limelight!
+nnoremap <F3> :Goyo <CR>
 
-nnoremap <F3> :Goyo<CR>
+let g:goyo_height = '100%'
+let g:goyo_width = '100%'
+
+
+" ---------
+" limelight
+" ---------
+
+let g:limelight_conceal_ctermfg = 'Gray'
 
 
 " ------
@@ -232,14 +239,12 @@ let g:syntastic_check_on_wq = 0
 set foldmethod=syntax
 set nofoldenable
 
-nnoremap <Space> za
-
 
 " -------
 " tagging
 " -------
 
-nnoremap <F8> :TagbarToggle<CR>
+nnoremap <F7> :TagbarToggle<CR>
 
 let g:easytags_async = 1
 let g:easytags_suppress_ctags_warning = 1
