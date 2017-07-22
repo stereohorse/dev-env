@@ -77,6 +77,7 @@ function night() {
 ZSH_HIGHLIGHT_STYLES[path]=none
 
 export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON="$(command \which python2)"
 source /usr/local/bin/virtualenvwrapper.sh
 
 export NVM_DIR="$HOME/.nvm"
