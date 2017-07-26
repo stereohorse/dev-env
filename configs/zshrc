@@ -55,6 +55,12 @@ function h() {
   howdoi -c -a $*
 }
 
+# ssh tunnelrs
+function tun() {
+  ssh $1 -L $2:$1:$2 -N
+}
+
+# weather
 alias weather='ansiweather -l Moscow,RU -a false -d true'
 alias weatherforecast='ansiweather -l Moscow,RU -a false -d true -F'
 

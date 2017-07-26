@@ -87,6 +87,7 @@ Plug 'zchee/deoplete-go'
 " js
 Plug 'mattn/emmet-vim'
 Plug 'elzr/vim-json'
+Plug 'pangloss/vim-javascript'
 
 " python
 Plug 'python-mode/python-mode'
@@ -110,7 +111,7 @@ syntax enable
 
 filetype plugin indent on
 
-set background=light
+set background=dark
 nnoremap <F11> :let &background = ( &background == "dark"? "light" : "dark" )<cr>
 
 colorscheme solarized
