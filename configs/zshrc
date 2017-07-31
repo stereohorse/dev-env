@@ -50,6 +50,18 @@ alias gdc='git diff --cached'
 
 alias ast='ssh asteroid'
 
+# gradle
+alias gw='./gradlew'
+
+alias gradle9='docker run --rm -v "$PWD":/project -v "$HOME/.gradle":/home/gradle/.gradle -w /project gradle:4.0.1-jdk9 gradle --no-daemon'
+alias with-gradle9='docker run --rm -v "$PWD":/project -v "$HOME/.gradle":/home/gradle/.gradle -w /project gradle:4.0.1-jdk9'
+alias gw9='with-gradle9 ./gradlew --no-daemon'
+
+# java 9
+alias javac9='docker run --rm -v "$PWD":/usr/src -w /usr/src openjdk:9-b179-slim javac -verbose -g'
+alias java9='docker run --rm -v "$PWD":/usr/src -w /usr/src openjdk:9-b179-slim java'
+alias with-java9='docker run --rm -v "$PWD":/usr/src -w /usr/src openjdk:9-b179-slim'
+
 # howdoi
 function h() {
   howdoi -c -a $*
