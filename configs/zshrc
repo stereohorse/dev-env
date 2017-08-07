@@ -69,7 +69,7 @@ function h() {
 
 # ssh tunnelrs
 function tun() {
-  ssh $1 -L $2:$1:$2 -N
+  ssh -nNT -L $2:'localhost':$2 $1
 }
 
 # weather
