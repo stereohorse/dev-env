@@ -14,7 +14,8 @@ zplug wbinglee/zsh-wakatime
 zplug zsh-users/zsh-syntax-highlighting, defer:2
 zplug mafredri/zsh-async
 zplug sindresorhus/pure, use:pure.zsh, as:theme
-zplug plugins/docker,   from:oh-my-zsh
+zplug plugins/docker, from:oh-my-zsh
+zplug plugins/thefuck, from:oh-my-zsh
 
 zplug load
 
@@ -73,6 +74,27 @@ function h() {
 # ssh tunnelrs
 function tun() {
   ssh -nNT -L $2:'localhost':$2 $1
+}
+
+# docker
+function dbash() {
+  docker exec -it $1 bash
+}
+
+function dsh() {
+  docker exec -it $1 sh
+}
+
+function dlogs() {
+  docker logs --tail 1000 -f $1
+}
+
+function dps() {
+  docker ps
+}
+
+function dpsa() {
+  docker ps -a
 }
 
 # weather

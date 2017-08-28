@@ -68,6 +68,8 @@
         - protobuf
         - python
         - python3
+        - thefuck
+        - m-cli
         - homebrew/science/r
         - ranger
         - reattach-to-user-namespace
