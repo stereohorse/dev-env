@@ -40,13 +40,14 @@ alias dc-restart="dc rm -sf && dc up"
 
 alias pyg="pygmentize -g"
 
+#vi
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
+alias vig="nvim +Goyo"
+alias vg="vig"
 
-alias ta="task"
-alias ti="timew"
-
+# git
 alias gst='git status'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias gd='git diff'
@@ -71,7 +72,7 @@ function h() {
   howdoi -c -a $*
 }
 
-# ssh tunnelrs
+# ssh tunnels
 function tun() {
   ssh -nNT -L $2:'localhost':$2 $1
 }
@@ -91,6 +92,10 @@ function dlogs() {
 
 function dps() {
   docker ps
+}
+
+function dpss() {
+  docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}"
 }
 
 function dpsa() {
