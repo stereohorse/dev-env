@@ -94,12 +94,16 @@ function dps() {
   docker ps
 }
 
+function dpsa() {
+  docker ps -a
+}
+
 function dpss() {
   docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}"
 }
 
-function dpsa() {
-  docker ps -a
+function dpssa() {
+  docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}"
 }
 
 # weather
