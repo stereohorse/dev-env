@@ -62,6 +62,8 @@ alias gradle9='docker run --rm -v "$PWD":/project -v "$HOME/.gradle":/home/gradl
 alias with-gradle9='docker run --rm -v "$PWD":/project -v "$HOME/.gradle":/home/gradle/.gradle -w /project gradle:4.0.1-jdk9'
 alias gw9='with-gradle9 ./gradlew --no-daemon'
 
+alias clean-gw='docker run --rm -v "$PWD":/project -w /project gradle ./gradlew --no-daemon'
+
 # java 9
 alias javac9='docker run --rm -v "$PWD":/usr/src -w /usr/src openjdk:9-b179-slim javac -verbose -g'
 alias java9='docker run --rm -v "$PWD":/usr/src -w /usr/src openjdk:9-b179-slim java'
@@ -94,16 +96,24 @@ function dps() {
   docker ps
 }
 
-function dpsa() {
-  docker ps -a
-}
-
 function dpss() {
   docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}"
 }
 
-function dpssa() {
-  docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}"
+function dpsn() {
+  docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Names}}"
+}
+
+function dpsa() {
+  docker ps -a
+}
+
+function dpsas() {
+  docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"
+}
+
+function dpsan() {
+  docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Names}}"
 }
 
 # weather
