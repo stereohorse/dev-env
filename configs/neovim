@@ -287,6 +287,18 @@ au BufEnter Vagrantfile :setlocal filetype=ruby
 au BufEnter *.json.j2 :setlocal filetype=json
 
 
+" ----------
+" json
+" ----
+
+function FormatAndHighlightJson()
+  %!jq .
+  set syntax=json
+endfunction
+
+command! FormatJSON exec FormatAndHighlightJson()
+
+
 " ---------
 " vim files
 " ---------

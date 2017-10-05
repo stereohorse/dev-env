@@ -14,6 +14,8 @@ zplug wbinglee/zsh-wakatime
 zplug zsh-users/zsh-syntax-highlighting, defer:2
 zplug mafredri/zsh-async
 zplug sindresorhus/pure, use:pure.zsh, as:theme
+zplug plugins/docker, from:oh-my-zsh
+zplug plugins/thefuck, from:oh-my-zsh
 
 zplug load
 
@@ -32,17 +34,20 @@ alias play="ansible-playbook"
 
 alias tmux="tmux -2"
 
+# docker-compose
 alias dc="docker-compose"
+alias dc-restart="dc rm -sf && dc up"
 
 alias pyg="pygmentize -g"
 
+#vi
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
+alias vig="nvim +Goyo"
+alias vg="vig"
 
-alias ta="task"
-alias ti="timew"
-
+# git
 alias gst='git status'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias gd='git diff'
@@ -57,6 +62,8 @@ alias gradle9='docker run --rm -v "$PWD":/project -v "$HOME/.gradle":/home/gradl
 alias with-gradle9='docker run --rm -v "$PWD":/project -v "$HOME/.gradle":/home/gradle/.gradle -w /project gradle:4.0.1-jdk9'
 alias gw9='with-gradle9 ./gradlew --no-daemon'
 
+alias clean-gw='docker run --rm -v "$PWD":/project -w /project gradle ./gradlew --no-daemon'
+
 # java 9
 alias javac9='docker run --rm -v "$PWD":/usr/src -w /usr/src openjdk:9-b179-slim javac -verbose -g'
 alias java9='docker run --rm -v "$PWD":/usr/src -w /usr/src openjdk:9-b179-slim java'
@@ -67,9 +74,46 @@ function h() {
   howdoi -c -a $*
 }
 
-# ssh tunnelrs
+# ssh tunnels
 function tun() {
   ssh -nNT -L $2:'localhost':$2 $1
+}
+
+# docker
+function dbash() {
+  docker exec -it $1 bash
+}
+
+function dsh() {
+  docker exec -it $1 sh
+}
+
+function dlogs() {
+  docker logs --tail 1000 -f $1
+}
+
+function dps() {
+  docker ps
+}
+
+function dpss() {
+  docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}"
+}
+
+function dpsn() {
+  docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Names}}"
+}
+
+function dpsa() {
+  docker ps -a
+}
+
+function dpsas() {
+  docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"
+}
+
+function dpsan() {
+  docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Names}}"
 }
 
 # weather
