@@ -96,6 +96,9 @@ Plug 'pangloss/vim-javascript'
 " python
 Plug 'python-mode/python-mode'
 
+" processing
+Plug 'sophacles/vim-processing'
+
 " writing
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
