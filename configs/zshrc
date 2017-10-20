@@ -160,3 +160,6 @@ export PATH=$PATH:/Users/stereohorse/.minimesos/bin
 
 export SDKMAN_DIR="/Users/stereohorse/.sdkman"
 [[ -s "/Users/stereohorse/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/stereohorse/.sdkman/bin/sdkman-init.sh"
+
+# added by travis gem
+[ -f /Users/stereohorse/.travis/travis.sh ] && source /Users/stereohorse/.travis/travis.sh

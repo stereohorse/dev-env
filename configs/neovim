@@ -25,6 +25,9 @@ Plug 'junegunn/fzf.vim'
 
 " navigation
 Plug 'easymotion/vim-easymotion'
+Plug 'rbgrouleff/bclose.vim'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'jeetsukumaran/vim-filebeagle'
 
 " general text editing
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -35,7 +38,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'wakatime/vim-wakatime'
 Plug 'vim-syntastic/syntastic'
-Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-eunuch'
 Plug 'justinmk/vim-sneak'
@@ -56,6 +58,8 @@ Plug 'godlygeek/tabular'
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'vim-scripts/BufOnly.vim'
+
+Plug 'editorconfig/editorconfig-vim'
 
 
 " clojure
@@ -244,6 +248,13 @@ set foldmethod=syntax
 set nofoldenable
 
 
+" --------
+" markdown
+" --------
+
+let g:instant_markdown_autostart = 0
+
+
 " -------
 " tagging
 " -------
@@ -284,7 +295,7 @@ au BufEnter Vagrantfile :setlocal filetype=ruby
 au BufEnter *.json.j2 :setlocal filetype=json
 
 
-" ----------
+" ----
 " json
 " ----
 
@@ -294,6 +305,13 @@ function FormatAndHighlightJson()
 endfunction
 
 command! FormatJSON exec FormatAndHighlightJson()
+
+
+" ------------
+" editorconfig
+" ------------
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 
 " ---------
