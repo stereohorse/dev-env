@@ -147,7 +147,7 @@ echo_ok
 echo
 
 echo_check 'nvim config is linked'
-if [[ -L "$HOME/.config/nvim/init.vim" ]]; then
+if [[ ! -L "$HOME/.config/nvim/init.vim" ]]; then
 	set -x
 	mkdir -p $HOME/.config/nvim && ln -s $PWD/configs/neovim $HOME/.config/nvim/init.vim
 	set +x
