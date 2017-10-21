@@ -7,3 +7,5 @@
 
 .DS_Store
 *.bak
+
+dev-env-setup.log
