@@ -96,7 +96,7 @@ ensure 'pip packages are installed' \
 #  - nodejs
 
 echo_check 'nvm is installed'
-if [[ ! -d "$HOME/.nvm" ]]; then
+if [[ ! -f "$HOME/.nvm/nvm.sh" ]]; then
 	set -x
 	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
 	set +x
