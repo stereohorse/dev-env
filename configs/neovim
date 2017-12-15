@@ -43,6 +43,8 @@ Plug 'tpope/vim-eunuch'
 Plug 'justinmk/vim-sneak'
 Plug 'janko-m/vim-test'
 
+Plug 'mileszs/ack.vim'
+
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar'
@@ -55,12 +57,13 @@ Plug 'benmills/vimux'
 
 Plug 'godlygeek/tabular'
 
+Plug 'Chiel92/vim-autoformat'
+
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'vim-scripts/BufOnly.vim'
 
 Plug 'editorconfig/editorconfig-vim'
-
 
 " clojure
 "Plug 'clojure-vim/async-clj-omni'
@@ -92,9 +95,10 @@ Plug 'zchee/deoplete-go'
 Plug 'mattn/emmet-vim'
 Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 " python
-Plug 'python-mode/python-mode'
+Plug 'python-mode/python-mode', {'branch': 'develop'}
 
 " processing
 Plug 'sophacles/vim-processing'
@@ -169,6 +173,20 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" yanking
+:vmap y ygv<Esc>
+
+
+" ------
+" search
+" ------
+
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
+
 
 " --------
 " deoplete
@@ -203,7 +221,7 @@ let g:limelight_conceal_ctermfg = 'Gray'
 let g:pymode_options_colorcolumn = 0
 let g:pymode_python = 'python3'
 
-let g:python_host_prog = '/usr/local/bin/python'
+let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 " disable autodoc
@@ -283,8 +301,9 @@ au FileType html,css EmmetInstall
 nnoremap <silent> <C-f>f :FZF<cr>
 nnoremap <silent> <C-f>w :Ag<cr>
 nnoremap <silent> <C-f>h :History<cr>
-nnoremap <silent> <C-f>c :Commits<cr>
-nnoremap <silent> <C-f>b :BCommits<cr>
+nnoremap <silent> <C-f>cc :Commits<cr>
+nnoremap <silent> <C-f>c :BCommits<cr>
+nnoremap <silent> <C-f>b :Buffers<cr>
 nnoremap <silent> <C-f>l :BLines<cr>
 nnoremap <silent> <C-f>m :Marks<cr>
 nnoremap <silent> <C-f>s :Snippets<cr>

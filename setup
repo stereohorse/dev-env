@@ -45,13 +45,13 @@ ensure 'TRIM is enabled' \
 
 ensure 'command line tools installed' \
 	'command -v git' \
-	'xcode-select --install'	
+	'xcode-select --install'
 
 #  - brew
 
 echo_check 'homebrew is installed'
 command -v brew &>/dev/null || {
-	set -x 
+	set -x
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	set +x
 }
@@ -89,6 +89,9 @@ echo_ok
 echo
 
 #  - pip
+
+ensure 'pip packages are installed' \
+	"pip3 install $(cat pip-packages)"
 
 ensure 'pip packages are installed' \
 	"pip2 install $(cat pip-packages)"

@@ -1,3 +1,10 @@
 haxor-news
 Pygments
 virtualenvwrapper
+pyflakes
+astroid
+isort
+mccabe
+pycodestyle
+flake8
+neovim

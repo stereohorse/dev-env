@@ -69,6 +69,10 @@ alias javac9='docker run --rm -v "$PWD":/usr/src -w /usr/src openjdk:9-b179-slim
 alias java9='docker run --rm -v "$PWD":/usr/src -w /usr/src openjdk:9-b179-slim java'
 alias with-java9='docker run --rm -v "$PWD":/usr/src -w /usr/src openjdk:9-b179-slim'
 
+# corona sdk
+alias corona='/Applications/Corona/Corona\ Simulator.app/Contents/MacOS/Corona\ Simulator'
+
+
 # howdoi
 function h() {
   howdoi -c -a $*
