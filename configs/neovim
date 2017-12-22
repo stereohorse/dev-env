@@ -65,6 +65,9 @@ Plug 'vim-scripts/BufOnly.vim'
 
 Plug 'editorconfig/editorconfig-vim'
 
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+
 " clojure
 "Plug 'clojure-vim/async-clj-omni'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
@@ -315,18 +318,6 @@ nnoremap <silent> <C-f>s :Snippets<cr>
 
 au BufEnter Vagrantfile :setlocal filetype=ruby
 au BufEnter *.json.j2 :setlocal filetype=json
-
-
-" ----
-" json
-" ----
-
-function FormatAndHighlightJson()
-  %!jq .
-  set syntax=json
-endfunction
-
-command! FormatJSON exec FormatAndHighlightJson()
 
 
 " ------------
