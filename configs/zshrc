@@ -1,5 +1,5 @@
 # -- oh my zsh
-export ZSH=/Users/stereohorse/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME=""
 plugins=()
 source $ZSH/oh-my-zsh.sh
@@ -144,7 +144,7 @@ ZSH_HIGHLIGHT_STYLES[path]=none
 
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON="$(command \which python2)"
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -167,3 +167,4 @@ export SDKMAN_DIR="/Users/stereohorse/.sdkman"
 
 # added by travis gem
 [ -f /Users/stereohorse/.travis/travis.sh ] && source /Users/stereohorse/.travis/travis.sh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

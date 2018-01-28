@@ -27,7 +27,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
-Plug 'jeetsukumaran/vim-filebeagle'
+
 
 " general text editing
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -224,8 +224,13 @@ let g:limelight_conceal_ctermfg = 'Gray'
 let g:pymode_options_colorcolumn = 0
 let g:pymode_python = 'python3'
 
-let g:python_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
+if has('unix')
+  let g:python_host_prog = '/usr/bin/python2'
+  let g:python3_host_prog = '/usr/bin/python3'
+elseif has('macunix')
+  let g:python_host_prog = '/usr/local/bin/python2'
+  let g:python3_host_prog = '/usr/local/bin/python3'
+endif
 
 " disable autodoc
 set completeopt=menu
@@ -293,8 +298,14 @@ let g:easytags_suppress_ctags_warning = 1
 " emmet
 " -----
 
-let g:user_emmet_install_global = 0
-au FileType html,css EmmetInstall
+let g:user_emmet_install_global = 1
+
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends': 'jsx',
+\      'quote_char': "'",
+\  },
+\}
 
 
 " ---
@@ -325,6 +336,16 @@ au BufEnter *.json.j2 :setlocal filetype=json
 " ------------
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+
+" ------
+" ranger
+" ------
+
+let g:ranger_map_keys = 0
+let g:ranger_replace_netrw = 1
+
+nnoremap - :Ranger<CR>
 
 
 " ---------
