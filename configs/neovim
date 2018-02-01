@@ -257,6 +257,13 @@ endfunction
 set completeopt=menu
 
 
+" ----------
+" formatting
+" ----------
+
+nnoremap <leader>f :Autoformat <CR>
+
+
 " --------
 " snippets
 " --------
