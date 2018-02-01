@@ -27,6 +27,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
+Plug 'jeetsukumaran/vim-buffergator'
 
 
 " general text editing
@@ -155,10 +156,15 @@ nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
 " airline
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline_theme='solarized'
 let g:airline_powerline_fonts = 1
+
+set laststatus=0
+set noshowmode
+
+set nonu
 
 
 " indents
@@ -223,6 +229,7 @@ let g:limelight_conceal_ctermfg = 'Gray'
 
 let g:pymode_options_colorcolumn = 0
 let g:pymode_python = 'python3'
+let g:pymode_rope = 1
 
 if has('unix')
   let g:python_host_prog = '/usr/bin/python2'
@@ -231,6 +238,20 @@ elseif has('macunix')
   let g:python_host_prog = '/usr/local/bin/python2'
   let g:python3_host_prog = '/usr/local/bin/python3'
 endif
+
+" remove automatic line numbers and put everything else back
+let g:pymode_options = 0
+
+autocmd Filetype python call SetPymodeOptions()
+
+function SetPymodeOptions()
+  setlocal complete+=t
+  setlocal formatoptions-=t
+  setlocal nowrap
+  setlocal textwidth=79
+  setlocal commentstring=#%s
+  setlocal define=^\s*\\(def\\\\|class\\)
+endfunction
 
 " disable autodoc
 set completeopt=menu
