@@ -12,65 +12,63 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'ryanoasis/vim-devicons'
-Plug 'zhaocai/GoldenView.Vim'
+" Plug 'zhaocai/GoldenView.Vim'
 
 " vcs
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv'
 
-" search
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
 " navigation
+Plug 'ervandew/supertab'
 Plug 'easymotion/vim-easymotion'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'jeetsukumaran/vim-buffergator'
 
-
-" general text editing
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ervandew/supertab'
-Plug 'scrooloose/nerdcommenter'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'wakatime/vim-wakatime'
-Plug 'vim-syntastic/syntastic'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'tpope/vim-eunuch'
-Plug 'justinmk/vim-sneak'
-Plug 'janko-m/vim-test'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 Plug 'mileszs/ack.vim'
 
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
-Plug 'majutsushi/tagbar'
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" ------------
+" text editing
+" ------------
 
-Plug 'metakirby5/codi.vim'
 Plug 'benmills/vimux'
-
-Plug 'godlygeek/tabular'
-
 Plug 'Chiel92/vim-autoformat'
-
-Plug 'terryma/vim-multiple-cursors'
-
-Plug 'vim-scripts/BufOnly.vim'
-
 Plug 'editorconfig/editorconfig-vim'
-
+Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets'
+Plug 'janko-m/vim-test'
+Plug 'jiangmiao/auto-pairs'
+Plug 'justinmk/vim-sneak'
+Plug 'majutsushi/tagbar'
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'SirVer/ultisnips'
+Plug 'sjl/gundo.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/BufOnly.vim'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'wakatime/vim-wakatime'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+Plug 'thinca/vim-quickrun'
 
+" ---------
+" languages
+" ---------
 
 " clojure
-"Plug 'clojure-vim/async-clj-omni'
+" Plug 'clojure-vim/async-clj-omni'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-fireplace'
@@ -80,9 +78,6 @@ Plug 'guns/vim-clojure-static'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'venantius/vim-cljfmt'
 Plug 'venantius/vim-eastwood'
-
-" go
-Plug 'fatih/vim-go'
 
 " markdown
 Plug 'plasticboy/vim-markdown'
@@ -103,6 +98,7 @@ Plug 'mxw/vim-jsx'
 
 " python
 Plug 'python-mode/python-mode', {'branch': 'develop'}
+Plug 'metakirby5/codi.vim'
 
 " processing
 Plug 'sophacles/vim-processing'
@@ -110,9 +106,6 @@ Plug 'sophacles/vim-processing'
 " writing
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-
-" execution
-Plug 'thinca/vim-quickrun'
 
 
 call plug#end()
@@ -175,6 +168,9 @@ au BufEnter * EnableStripWhitespaceOnSave
 
 " execution
 nnoremap <F5> :QuickRun<cr>
+
+" undo
+nnoremap <F6> :GundoToggle<cr>
 
 " navigation
 nnoremap <C-J> <C-W><C-J>
@@ -242,7 +238,7 @@ endif
 " remove automatic line numbers and put everything else back
 let g:pymode_options = 0
 
-autocmd Filetype python call SetPymodeOptions()
+au Filetype python call SetPymodeOptions()
 
 function SetPymodeOptions()
   setlocal complete+=t
@@ -261,7 +257,14 @@ set completeopt=menu
 " formatting
 " ----------
 
+let g:prettier#exec_cmd_async = 1
+
 nnoremap <leader>f :Autoformat <CR>
+au Filetype javascript,html,css call SetFormatCodeKey()
+
+function SetFormatCodeKey()
+  nmap <leader>f <plug>(Prettier)
+endfunction
 
 
 " --------
@@ -281,6 +284,13 @@ au FileType go nmap gi <Plug>(go-info)
 au FileType go nmap ga <Plug>(go-alternate-edit)
 au FileType go nmap gc <Plug>(go-coverage-toggle)
 au FileType go nmap gr <Plug>(go-rename)
+
+
+" -----------
+" golden view
+" -----------
+
+let g:goldenview__enable_default_mapping = 0
 
 
 " ------
@@ -329,11 +339,11 @@ let g:easytags_suppress_ctags_warning = 1
 let g:user_emmet_install_global = 1
 
 let g:user_emmet_settings = {
-\  'javascript.jsx' : {
-\      'extends': 'jsx',
-\      'quote_char': "'",
-\  },
-\}
+      \  'javascript.jsx' : {
+      \      'extends': 'jsx',
+      \      'quote_char': "'",
+      \  },
+      \}
 
 
 " ---
@@ -401,6 +411,6 @@ set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
 " jump to last cursor position
 au BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
