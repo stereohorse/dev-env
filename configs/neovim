@@ -79,6 +79,9 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'venantius/vim-cljfmt'
 Plug 'venantius/vim-eastwood'
 
+" toml
+Plug 'cespare/vim-toml'
+
 " markdown
 Plug 'plasticboy/vim-markdown'
 Plug 'suan/vim-instant-markdown'
@@ -227,13 +230,8 @@ let g:pymode_options_colorcolumn = 0
 let g:pymode_python = 'python3'
 let g:pymode_rope = 1
 
-if has('unix')
-  let g:python_host_prog = '/usr/bin/python2'
-  let g:python3_host_prog = '/usr/bin/python3'
-elseif has('macunix')
-  let g:python_host_prog = '/usr/local/bin/python2'
-  let g:python3_host_prog = '/usr/local/bin/python3'
-endif
+let g:python_host_prog = $HOME.'/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = $HOME.'/.pyenv/versions/neovim3/bin/python'
 
 " remove automatic line numbers and put everything else back
 let g:pymode_options = 0
