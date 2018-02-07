@@ -17,6 +17,9 @@ zplug sindresorhus/pure, use:pure.zsh, as:theme
 zplug plugins/docker, from:oh-my-zsh
 zplug plugins/thefuck, from:oh-my-zsh
 
+export NVM_LAZY_LOAD=true
+zplug lukechilds/zsh-nvm
+
 zplug load
 
 
@@ -142,36 +145,21 @@ function night() {
 
 ZSH_HIGHLIGHT_STYLES[path]=none
 
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
-
-eval "$(pipenv --completion)"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-[ -f ~/.atlas ] && source ~/.atlas
 
 export ENHANCD_FILTER=fzf
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=11'
 
-export GOPATH=~/work/proj/go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH="~/work/proj/go"
+export PATH="$PATH:$GOPATH/bin"
 
-export PATH=$PATH:/Users/stereohorse/.minimesos/bin
+export PATH=$PATH:$HOME/.minimesos/bin
 
-export SDKMAN_DIR="/Users/stereohorse/.sdkman"
-[[ -s "/Users/stereohorse/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/stereohorse/.sdkman/bin/sdkman-init.sh"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
 
-# added by travis gem
-[ -f /Users/stereohorse/.travis/travis.sh ] && source /Users/stereohorse/.travis/travis.sh
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if pyenv commands | command grep -q virtualenv-init; then
+  eval "$(pyenv virtualenv-init - zsh)"
+fi
