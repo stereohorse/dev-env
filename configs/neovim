@@ -135,6 +135,8 @@ set encoding=utf8
 
 set clipboard=unnamed
 
+set cursorline
+
 let mapleader=","
 
 " buffers
@@ -162,7 +164,6 @@ set laststatus=0
 set noshowmode
 
 set nonu
-
 
 " indents
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
