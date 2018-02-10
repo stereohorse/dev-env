@@ -30,6 +30,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'mileszs/ack.vim'
+Plug 'junegunn/vim-slash'
 
 
 " ------------
@@ -99,10 +100,14 @@ Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'posva/vim-vue'
+Plug 'Galooshi/vim-import-js'
 
 " python
 Plug 'python-mode/python-mode', {'branch': 'develop'}
 Plug 'metakirby5/codi.vim'
+
+" swift
+Plug 'apple/swift', { 'rtp': 'utils/vim' }
 
 " processing
 Plug 'sophacles/vim-processing'
