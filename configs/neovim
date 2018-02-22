@@ -12,7 +12,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'zhaocai/GoldenView.Vim'
 
 " vcs
 Plug 'tpope/vim-fugitive'
@@ -101,6 +100,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'posva/vim-vue'
 Plug 'Galooshi/vim-import-js'
+Plug 'flowtype/vim-flow'
 
 " python
 Plug 'python-mode/python-mode', {'branch': 'develop'}
@@ -337,9 +337,9 @@ let g:easytags_async = 1
 let g:easytags_suppress_ctags_warning = 1
 
 
-" -----
-" emmet
-" -----
+" ----
+" html
+" ----
 
 let g:user_emmet_install_global = 1
 
@@ -349,6 +349,8 @@ let g:user_emmet_settings = {
       \      'quote_char': "'",
       \  },
       \}
+
+au FileType html nnoremap da Bhd2f"
 
 
 " ---
