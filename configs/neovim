@@ -124,12 +124,14 @@ call plug#end()
 " l&f
 " ---
 
+let mapleader=","
+
 syntax enable
 
 filetype plugin indent on
 
 set background=dark
-nnoremap <F11> :let &background = ( &background == "dark"? "light" : "dark" )<cr>
+nnoremap <leader>sb :let &background = ( &background == "dark"? "light" : "dark" )<cr>
 
 colorscheme solarized
 
@@ -141,8 +143,6 @@ set encoding=utf8
 set clipboard=unnamed
 
 set cursorline
-
-let mapleader=","
 
 " buffers
 nnoremap <Tab> :bnext<CR>
@@ -190,6 +190,13 @@ nnoremap <C-H> <C-W><C-H>
 
 " yanking
 :vmap y ygv<Esc>
+
+" custom config
+let $GENERATED_RC = $HOME.'/.nvim.generated'
+
+if filereadable($GENERATED_RC)
+  source $GENERATED_RC
+endif
 
 
 " ------
