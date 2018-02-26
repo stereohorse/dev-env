@@ -146,6 +146,7 @@ function night() {
 ZSH_HIGHLIGHT_STYLES[path]=none
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 export ENHANCD_FILTER=fzf
 
