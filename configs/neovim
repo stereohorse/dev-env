@@ -12,7 +12,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'zhaocai/GoldenView.Vim'
 
 " vcs
 Plug 'tpope/vim-fugitive'
@@ -101,6 +100,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'posva/vim-vue'
 Plug 'Galooshi/vim-import-js'
+Plug 'flowtype/vim-flow'
 
 " python
 Plug 'python-mode/python-mode', {'branch': 'develop'}
@@ -124,12 +124,14 @@ call plug#end()
 " l&f
 " ---
 
+let mapleader=","
+
 syntax enable
 
 filetype plugin indent on
 
 set background=dark
-nnoremap <F11> :let &background = ( &background == "dark"? "light" : "dark" )<cr>
+nnoremap <leader>sb :let &background = ( &background == "dark"? "light" : "dark" )<cr>
 
 colorscheme solarized
 
@@ -141,8 +143,6 @@ set encoding=utf8
 set clipboard=unnamed
 
 set cursorline
-
-let mapleader=","
 
 " buffers
 nnoremap <Tab> :bnext<CR>
@@ -190,6 +190,13 @@ nnoremap <C-H> <C-W><C-H>
 
 " yanking
 :vmap y ygv<Esc>
+
+" custom config
+let $GENERATED_RC = $HOME.'/.nvim.generated'
+
+if filereadable($GENERATED_RC)
+  source $GENERATED_RC
+endif
 
 
 " ------
@@ -337,9 +344,9 @@ let g:easytags_async = 1
 let g:easytags_suppress_ctags_warning = 1
 
 
-" -----
-" emmet
-" -----
+" ----
+" html
+" ----
 
 let g:user_emmet_install_global = 1
 
@@ -349,6 +356,8 @@ let g:user_emmet_settings = {
       \      'quote_char': "'",
       \  },
       \}
+
+au FileType html nnoremap da Bhd2f"
 
 
 " ---

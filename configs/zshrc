@@ -129,15 +129,15 @@ alias weatherforecast='ansiweather -l Moscow,RU -a false -d true -F'
 
 # toggle day/nigth mode
 function day() {
-  sed -i.bak 's/set background=dark/set background=light/' $(readlink ~/.config/nvim/init.vim)
+  echo 'set background=light' > "$HOME/.nvim.generated"
   tmux source-file ~/.tmux.solarized.light
-  echo -e "\ePtmux;\e\e]1337;SetProfile=day\a\e\\"
+  command -v osascript >/dev/null 2>&1 && osascript "$HOME/.set-macos-terminal-color" "Solarized Light"
 }
 
 function night() {
-  sed -i.bak 's/set background=light/set background=dark/' $(readlink ~/.config/nvim/init.vim)
+  echo 'set background=dark' > "$HOME/.nvim.generated"
   tmux source-file ~/.tmux.solarized.dark
-  echo -e "\ePtmux;\e\e]1337;SetProfile=night\a\e\\"
+  command -v osascript >/dev/null 2>&1 && osascript "$HOME/.set-macos-terminal-color" "Solarized Dark"
 }
 
 
@@ -146,12 +146,13 @@ function night() {
 ZSH_HIGHLIGHT_STYLES[path]=none
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 export ENHANCD_FILTER=fzf
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=11'
 
-export GOPATH="~/work/proj/go"
+export GOPATH="$HOME/work/proj/go"
 export PATH="$PATH:$GOPATH/bin"
 
 export PATH=$PATH:$HOME/.minimesos/bin
