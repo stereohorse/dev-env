@@ -163,3 +163,5 @@ eval "$(pyenv init - zsh)"
 if pyenv commands | command grep -q virtualenv-init; then
   eval "$(pyenv virtualenv-init - zsh)"
 fi
+
+eval $(thefuck --alias)
