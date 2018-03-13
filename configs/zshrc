@@ -43,7 +43,7 @@ alias dc-restart="dc rm -sf && dc up"
 
 alias pyg="pygmentize -g"
 
-#vi
+# vi
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
