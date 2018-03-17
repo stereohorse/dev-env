@@ -50,6 +50,9 @@ alias vim="nvim"
 alias vig="nvim +Goyo"
 alias vg="vig"
 
+# emacs
+alias em="emacsclient"
+
 # git
 alias gst='git status'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"

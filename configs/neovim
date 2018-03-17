@@ -63,19 +63,22 @@ Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'thinca/vim-quickrun'
 Plug 'tpope/vim-eunuch'
+Plug 'rizzatti/dash.vim'
 
 " ---------
 " languages
 " ---------
 
 " clojure
-" Plug 'clojure-vim/async-clj-omni'
+Plug 'clojure-vim/async-clj-omni'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'guns/vim-sexp'
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-salve'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-classpath'
 Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-sexp'
+Plug 'guns/vim-clojure-highlight'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'venantius/vim-cljfmt'
 Plug 'venantius/vim-eastwood'
@@ -280,6 +283,16 @@ function SetFormatCodeKey()
 endfunction
 
 
+" -------
+" rainbow
+" -------
+
+autocmd VimEnter *       RainbowParenthesesToggle
+autocmd Syntax   clojure RainbowParenthesesLoadRound
+autocmd Syntax   clojure RainbowParenthesesLoadSquare
+autocmd Syntax   clojure RainbowParenthesesLoadBraces
+
+
 " --------
 " snippets
 " --------
@@ -297,13 +310,6 @@ au FileType go nmap gi <Plug>(go-info)
 au FileType go nmap ga <Plug>(go-alternate-edit)
 au FileType go nmap gc <Plug>(go-coverage-toggle)
 au FileType go nmap gr <Plug>(go-rename)
-
-
-" -----------
-" golden view
-" -----------
-
-let g:goldenview__enable_default_mapping = 0
 
 
 " ------
@@ -393,6 +399,13 @@ au BufEnter *.json.j2 :setlocal filetype=json
 " ------------
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+
+" ----
+" dash
+" ----
+
+let g:dash_activate = 0
 
 
 " ------
