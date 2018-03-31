@@ -65,16 +65,26 @@ Plug 'thinca/vim-quickrun'
 Plug 'tpope/vim-eunuch'
 Plug 'rizzatti/dash.vim'
 
+Plug 'neomake/neomake'
+Plug 'tpope/vim-dispatch'
+
+Plug 'kassio/neoterm'
+
+Plug 'junegunn/vim-emoji'
+
+
 " ---------
 " languages
 " ---------
+
+Plug 'janko-m/vim-test'
+
 
 " clojure
 Plug 'clojure-vim/async-clj-omni'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-salve'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-classpath'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-sexp'
@@ -108,7 +118,7 @@ Plug 'flowtype/vim-flow'
 
 " python
 Plug 'python-mode/python-mode', {'branch': 'develop'}
-Plug 'metakirby5/codi.vim'
+Plug 'alfredodeza/pytest.vim'
 
 " swift
 Plug 'apple/swift', { 'rtp': 'utils/vim' }
@@ -192,6 +202,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+set splitbelow
+set splitright
+
 " yanking
 :vmap y ygv<Esc>
 
@@ -229,8 +242,8 @@ let g:deoplete#enable_at_startup = 1
 
 nnoremap <F3> :Goyo <CR>
 
-let g:goyo_height = '100%'
-let g:goyo_width = '100%'
+"let g:goyo_height = '100%'
+"let g:goyo_width = '100%'
 
 
 " ---------
@@ -322,7 +335,7 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_mode_map = {
@@ -406,6 +419,13 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " ----
 
 let g:dash_activate = 0
+
+
+" -----
+" tests
+" -----
+
+let test#strategy = "neomake"
 
 
 " ------

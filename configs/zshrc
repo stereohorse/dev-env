@@ -16,8 +16,6 @@ zplug mafredri/zsh-async
 zplug sindresorhus/pure, use:pure.zsh, as:theme
 zplug plugins/docker, from:oh-my-zsh
 zplug plugins/thefuck, from:oh-my-zsh
-
-export NVM_LAZY_LOAD=true
 zplug lukechilds/zsh-nvm
 
 zplug load
@@ -158,7 +156,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=11'
 export GOPATH="$HOME/work/proj/go"
 export PATH="$PATH:$GOPATH/bin"
 
-export PATH=$PATH:$HOME/.minimesos/bin
+export PATH="$PATH:$HOME/.minimesos/bin"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -169,3 +167,8 @@ if pyenv commands | command grep -q virtualenv-init; then
 fi
 
 eval $(thefuck --alias)
+
+utils_dir="$HOME/.zsh-utils"
+if [ -d "$utils_dir" ]; then
+  export PATH="$PATH:$utils_dir"
+fi
