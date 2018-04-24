@@ -37,7 +37,7 @@ alias tmux="tmux -2"
 
 # docker-compose
 alias dc="docker-compose"
-alias dc-restart="dc rm -sf && dc up"
+alias dc-restart="dc down && dc up"
 
 alias pyg="pygmentize -g"
 
@@ -172,3 +172,5 @@ utils_dir="$HOME/.zsh-utils"
 if [ -d "$utils_dir" ]; then
   export PATH="$PATH:$utils_dir"
 fi
+
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh

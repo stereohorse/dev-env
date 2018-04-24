@@ -72,6 +72,10 @@ Plug 'kassio/neoterm'
 
 Plug 'junegunn/vim-emoji'
 
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
+Plug 'vim-scripts/utl.vim'
+
 
 " ---------
 " languages
@@ -115,6 +119,9 @@ Plug 'mxw/vim-jsx'
 Plug 'posva/vim-vue'
 Plug 'Galooshi/vim-import-js'
 Plug 'flowtype/vim-flow'
+
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 
 " python
 Plug 'python-mode/python-mode', {'branch': 'develop'}
