@@ -76,6 +76,8 @@ Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'vim-scripts/utl.vim'
 
+Plug 'xolox/vim-notes'
+
 
 " ---------
 " languages
