@@ -133,6 +133,10 @@ Plug 'apple/swift', { 'rtp': 'utils/vim' }
 " processing
 Plug 'sophacles/vim-processing'
 
+" elixir
+Plug 'slashmili/alchemist.vim'
+Plug 'elixir-editors/vim-elixir'
+
 " writing
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
