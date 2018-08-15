@@ -47,6 +47,7 @@ alias vi="nvim"
 alias vim="nvim"
 alias vig="nvim +Goyo"
 alias vg="vig"
+alias vp="vi *.md -S script.vim"
 
 # emacs
 alias em="emacsclient"
@@ -174,3 +175,14 @@ if [ -d "$utils_dir" ]; then
 fi
 
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+export PATH="$PATH:$HOME/Library/Application Support/itch/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/stereohorse/.sdkman"
+[[ -s "/Users/stereohorse/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/stereohorse/.sdkman/bin/sdkman-init.sh"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+export PATH="$PATH:$HOME/.composer/vendor/bin"

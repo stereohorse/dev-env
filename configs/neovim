@@ -65,6 +65,10 @@ Plug 'thinca/vim-quickrun'
 Plug 'tpope/vim-eunuch'
 Plug 'rizzatti/dash.vim'
 
+Plug 'dbeniamine/cheat.sh-vim'
+Plug 'vim-scripts/SyntaxRange'
+Plug 'vim-scripts/ingo-library'
+
 Plug 'neomake/neomake'
 Plug 'tpope/vim-dispatch'
 
@@ -344,8 +348,10 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
 let g:syntastic_mode_map = {
     \ "mode": "active",
