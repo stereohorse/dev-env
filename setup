@@ -33,12 +33,6 @@ function ensure() {
 }
 
 
-# -- high priority settings
-
-ensure 'TRIM is enabled' \
-	"system_profiler SPSerialATADataType | grep 'TRIM' | grep 'Yes'" \
-	'sudo trimforce enable'
-
 # -- setup packages
 
 #  - system
@@ -58,9 +52,15 @@ command -v brew &>/dev/null || {
 echo_ok
 echo
 
+echo_check 'cask versions tapped'
+brew tap homebrew/cask-versions
+echo_ok
+echo
+
+
 ensure 'java is installed' \
 	'java --version | grep -i "oracle"' \
-	'brew cask install java'
+	'brew cask install java8'
 
 ensure 'brew packages are installed' \
 	"brew install $(cat brew-packages)"
@@ -82,7 +82,7 @@ echo
 echo_check 'mas packages are installed'
 while read package; do
 	set -x
-	mas install $(mas search "$package" | head -n 1 | awk '{print $1}')
+	mas install $(echo "$package" | awk '{print $1}')
 	set +x
 done < mas-packages
 echo_ok
@@ -101,7 +101,7 @@ ensure 'pip packages are installed' \
 echo_check 'nvm is installed'
 if [[ ! -f "$HOME/.nvm/nvm.sh" ]]; then
 	set -x
-	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 	set +x
 fi
 echo_ok
@@ -198,18 +198,6 @@ echo
 
 # -- settings
 
-HOSTNAME=metalbook
-function set_hostname() {
-	sudo scutil --set HostName $HOSTNAME \
-		&& sudo scutil --set LocalHostName $HOSTNAME \
-		&& sudo scutil --set ComputerName $HOSTNAME \
-		&& sudo dscacheutil -flushcache
-}
-
-ensure 'hostname is set' \
-	"hostname | grep '$HOSTNAME'" \
-	'set_hostname'
-
 ensure 'dock is clean' \
 	'dockutil --remove all'
 
@@ -217,3 +205,4 @@ ensure 'dock is clean' \
 
 echo '# setup finished'
 echo '# please, restart OS'
+
