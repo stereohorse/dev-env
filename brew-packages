@@ -8,6 +8,7 @@ atool
 autojump
 automake
 autossh
+bat
 bats
 boost-python
 boot-clj
@@ -22,6 +23,7 @@ cntlm
 coreutils
 cppcheck
 ctags
+dart-lang/dart/dart
 direnv
 dockutil
 doctl
@@ -50,10 +52,12 @@ htop
 httpie
 hugo
 ideviceinstaller
+influxdb
 irssi
 jrnl
 kafkacat
 kubernetes-cli
+kubernetes-helm
 leiningen
 libcaca
 libvirt
@@ -81,6 +85,7 @@ plantuml
 pngquant
 portmidi
 pssh
+pyenv-virtualenv
 qemu
 r
 ranger
@@ -89,15 +94,18 @@ rename
 ripgrep
 ruby
 salt
+sass/sass/sass
 sbt
 sdl_image
 sdl_mixer
 sdl_ttf
 source-highlight
 sphinx-doc
+pivotal/tap/springboot
 swiftlint
 taskd
 tasksh
+telnet
 terraform
 the_silver_searcher
 thefuck

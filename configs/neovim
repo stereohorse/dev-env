@@ -8,6 +8,8 @@ call plug#begin('~/.vim/plugged')
 " l&f
 Plug 'mhinz/vim-startify'
 Plug 'altercation/vim-colors-solarized'
+Plug 'phanviet/vim-monokai-pro'
+Plug 'srcery-colors/srcery-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -49,6 +51,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/denite.nvim'
 Plug 'SirVer/ultisnips'
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -126,7 +129,9 @@ Plug 'posva/vim-vue'
 Plug 'Galooshi/vim-import-js'
 Plug 'flowtype/vim-flow'
 
-Plug 'leafgarland/typescript-vim'
+"Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
 Plug 'Quramy/tsuquyomi'
 
 " python
@@ -164,6 +169,8 @@ filetype plugin indent on
 set background=dark
 nnoremap <leader>sb :let &background = ( &background == "dark"? "light" : "dark" )<cr>
 
+" set termguicolors
+set background=dark
 colorscheme solarized
 
 set hidden
@@ -306,7 +313,7 @@ set completeopt=menu
 let g:prettier#exec_cmd_async = 1
 
 nnoremap <leader>f :Autoformat <CR>
-au Filetype javascript,html,css call SetFormatCodeKey()
+au Filetype javascript,typescript,html,css call SetFormatCodeKey()
 
 function SetFormatCodeKey()
   nmap <leader>f <plug>(Prettier)

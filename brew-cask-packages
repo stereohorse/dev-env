@@ -5,6 +5,7 @@ battle-net
 coronasdk
 discord
 docker
+dotnet-sdk
 dropbox
 dwarf-fortress
 eclipse-ide
@@ -12,14 +13,13 @@ etcher
 evernote
 firefox
 flux
-font-source-code-pro
 ganttproject
 gimp
 godot
 google-chrome
-haskell-platform
 hyper
 insomnia
+iterm2
 java8
 jetbrains-toolbox
 keka
@@ -33,12 +33,12 @@ obs
 opera
 postman
 processing
+rstudio
 skype
 slack
 spectacle
 steam
 teamviewer
-telegram
 tickeys
 tunnelblick
 upterm

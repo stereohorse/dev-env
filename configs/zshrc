@@ -57,6 +57,7 @@ alias gst='git status'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias gd='git diff'
 alias gdc='git diff --cached'
+alias gitwhore='git -c http.sslVerify=false'
 
 alias ast='mosh asteroid'
 
@@ -125,6 +126,14 @@ function dpsan() {
   docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Names}}"
 }
 
+
+# k8s
+
+alias k=kubectl
+alias kg='kubectl get'
+alias kd='kubectl describe'
+
+
 # weather
 alias weather='ansiweather -l Moscow,RU -a false -d true'
 alias weatherforecast='ansiweather -l Moscow,RU -a false -d true -F'
@@ -186,3 +195,6 @@ export SDKMAN_DIR="/Users/stereohorse/.sdkman"
 export PATH="$PATH:$HOME/.rvm/bin"
 
 export PATH="$PATH:$HOME/.composer/vendor/bin"
+
+source /anaconda3/etc/profile.d/conda.sh
+
