@@ -93,7 +93,6 @@ reattach-to-user-namespace
 rename
 ripgrep
 ruby
-salt
 sass/sass/sass
 sbt
 sdl_image
@@ -102,7 +101,6 @@ sdl_ttf
 source-highlight
 sphinx-doc
 pivotal/tap/springboot
-swiftlint
 taskd
 tasksh
 telnet

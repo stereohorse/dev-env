@@ -77,17 +77,6 @@ fi
 echo_ok
 echo
 
-#  - mas
-
-echo_check 'mas packages are installed'
-while read package; do
-	set -x
-	mas install $(echo "$package" | awk '{print $1}')
-	set +x
-done < mas-packages
-echo_ok
-echo
-
 #  - pip
 
 ensure 'pip packages are installed' \

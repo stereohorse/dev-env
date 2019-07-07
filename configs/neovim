@@ -93,6 +93,14 @@ Plug 'xolox/vim-notes'
 Plug 'janko-m/vim-test'
 
 
+" elixir
+Plug 'elixir-editors/vim-elixir'
+
+
+" pug
+Plug 'digitaltoad/vim-pug'
+
+
 " clojure
 Plug 'clojure-vim/async-clj-omni'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
