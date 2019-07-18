@@ -256,3 +256,9 @@ export PATH="$PATH:$HOME/.mix/"
 # Poetry
 export PATH="$PATH:$HOME/.poetry/bin"
 
+
+###-tns-completion-start-###
+if [ -f /Users/stereohorse/.tnsrc ]; then 
+    source /Users/stereohorse/.tnsrc 
+fi
+###-tns-completion-end-###
