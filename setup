@@ -157,14 +157,6 @@ ensure 'tmux config is linked' \
 	"test -L $HOME/.tmux.conf" \
 	"ln -s $PWD/configs/tmux $HOME/.tmux.conf"
 
-ensure 'tmux solarized dark theme is linked' \
-	"test -L $HOME/.tmux.solarized.dark" \
-	"ln -s $PWD/configs/tmux.solarized.dark $HOME/.tmux.solarized.dark"
-
-ensure 'tmux solarized light theme is linked' \
-	"test -L $HOME/.tmux.solarized.light" \
-	"ln -s $PWD/configs/tmux.solarized.light $HOME/.tmux.solarized.light"
-
 #  - zsh
 
 echo_check 'zplug is installed'

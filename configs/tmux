@@ -51,9 +51,10 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-pain-control'
 set -g @plugin 'tmux-plugins/tmux-sessionist'
-set -g @plugin 'tmux-plugins/tmux-battery'
-set -g @plugin 'tmux-plugins/tmux-cpu'
 set -g @plugin 'tmux-plugins/tmux-open'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'arcticicestudio/nord-tmux'
 
 run '~/.tmux/plugins/tpm/tpm'
 
@@ -61,6 +62,7 @@ run '~/.tmux/plugins/tpm/tpm'
 set -g @shell_mode 'vi'
 
 # continuum
-set -g @continuum-boot 'on'
 set -g @continuum-restore 'on'
-set -g @continuum-boot-options 'iterm,fullscreen'
+
+# ressurect
+set -g @resurrect-strategy-nvim 'session'
