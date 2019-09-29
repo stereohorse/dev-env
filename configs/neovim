@@ -8,8 +8,7 @@ call plug#begin('~/.vim/plugged')
 " l&f
 Plug 'mhinz/vim-startify'
 Plug 'altercation/vim-colors-solarized'
-Plug 'phanviet/vim-monokai-pro'
-Plug 'srcery-colors/srcery-vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -22,15 +21,12 @@ Plug 'gregsexton/gitv'
 
 " navigation
 Plug 'ervandew/supertab'
-Plug 'easymotion/vim-easymotion'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
-Plug 'jeetsukumaran/vim-buffergator'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'mileszs/ack.vim'
 Plug 'junegunn/vim-slash'
 
 
@@ -38,7 +34,7 @@ Plug 'junegunn/vim-slash'
 " text editing
 " ------------
 
-Plug 'benmills/vimux'
+Plug 'benmills/vimux' " ?
 Plug 'Chiel92/vim-autoformat'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
@@ -51,7 +47,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/denite.nvim'
 Plug 'SirVer/ultisnips'
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -138,17 +133,12 @@ Plug 'posva/vim-vue'
 Plug 'Galooshi/vim-import-js'
 Plug 'flowtype/vim-flow'
 
-"Plug 'leafgarland/typescript-vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
-Plug 'Quramy/tsuquyomi'
 
 " python
 Plug 'python-mode/python-mode', {'branch': 'develop'}
 Plug 'alfredodeza/pytest.vim'
-
-" swift
-Plug 'apple/swift', { 'rtp': 'utils/vim' }
 
 " processing
 Plug 'sophacles/vim-processing'
@@ -180,7 +170,7 @@ nnoremap <leader>sb :let &background = ( &background == "dark"? "light" : "dark"
 
 " set termguicolors
 set background=dark
-colorscheme solarized
+colorscheme nord
 
 set hidden
 set nofoldenable
@@ -357,6 +347,9 @@ au FileType go nmap ga <Plug>(go-alternate-edit)
 au FileType go nmap gc <Plug>(go-coverage-toggle)
 au FileType go nmap gr <Plug>(go-rename)
 
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
+
 
 " ------
 " syntax
@@ -401,6 +394,12 @@ nnoremap <F7> :TagbarToggle<CR>
 
 let g:easytags_async = 1
 let g:easytags_suppress_ctags_warning = 1
+
+" ----------
+" typescript
+" ----------
+
+let g:nvim_typescript#default_mappings = 1
 
 
 " ----
