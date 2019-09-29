@@ -262,3 +262,6 @@ if [ -f /Users/stereohorse/.tnsrc ]; then
     source /Users/stereohorse/.tnsrc 
 fi
 ###-tns-completion-end-###
+
+# added by travis gem
+[ -f /Users/stereohorse/.travis/travis.sh ] && source /Users/stereohorse/.travis/travis.sh

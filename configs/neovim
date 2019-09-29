@@ -127,6 +127,7 @@ Plug 'vim-ruby/vim-ruby'
 " go
 Plug 'fatih/vim-go'
 Plug 'zchee/deoplete-go'
+Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
 " js
 Plug 'mattn/emmet-vim'
