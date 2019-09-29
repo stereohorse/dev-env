@@ -132,10 +132,8 @@ Plug 'posva/vim-vue'
 Plug 'Galooshi/vim-import-js'
 Plug 'flowtype/vim-flow'
 
-"Plug 'leafgarland/typescript-vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
-Plug 'Quramy/tsuquyomi'
 
 " python
 Plug 'python-mode/python-mode', {'branch': 'develop'}
@@ -395,6 +393,12 @@ nnoremap <F7> :TagbarToggle<CR>
 
 let g:easytags_async = 1
 let g:easytags_suppress_ctags_warning = 1
+
+" ----------
+" typescript
+" ----------
+
+let g:nvim_typescript#default_mappings = 1
 
 
 " ----
