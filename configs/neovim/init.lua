@@ -1,5 +1,5 @@
 require('plugins')
 require('settings')
-require('statusline')
+require('lookandfeel')
 require('navigation')
 require('editing')
