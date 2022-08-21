@@ -26,14 +26,11 @@ return require('packer').startup(function(use)
   use { 'powerman/vim-plugin-ruscmd' }
 
   -- LOOK AND FEEL
-  use {'glepnir/dashboard-nvim'}
-
-  use {'dracula/vim', as = 'dracula'}
-
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
+  use { 'dracula/vim', as = 'dracula' }
+  use { 'glepnir/dashboard-nvim' }
+  use { 'kyazdani42/nvim-web-devicons' }
+  use { 'kyazdani42/nvim-tree.lua' }
+  use { 'nvim-lualine/lualine.nvim' }
 
   -- NAVIGATION
   use {
@@ -41,7 +38,10 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use {
-    'nvim-telescope/telescope-fzf-native.nvim', 
-    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' 
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  }
+  use {
+    'ludovicchabant/vim-gutentags'
   }
 end)

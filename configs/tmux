@@ -54,7 +54,7 @@ set -g @plugin 'tmux-plugins/tmux-sessionist'
 set -g @plugin 'tmux-plugins/tmux-open'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
-set -g @plugin 'arcticicestudio/nord-tmux'
+set -g @plugin 'dracula/tmux'
 
 run '~/.tmux/plugins/tpm/tpm'
 
@@ -66,3 +66,6 @@ set -g @continuum-restore 'on'
 
 # ressurect
 set -g @resurrect-strategy-nvim 'session'
+
+# dracula
+set -g @dracula-plugins "cpu-usage ram-usage battery network-bandwidth time"
