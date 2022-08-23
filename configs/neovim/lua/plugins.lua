@@ -25,6 +25,11 @@ return require('packer').startup(function(use)
 
   use { 'powerman/vim-plugin-ruscmd' }
 
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons"
+  }
+
   -- LOOK AND FEEL
   use { 'dracula/vim', as = 'dracula' }
   use { 'glepnir/dashboard-nvim' }

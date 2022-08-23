@@ -105,3 +105,7 @@ cmp.setup {
 
 -- COMMENTING
 require('Comment').setup()
+
+-- DIAGNOSTICS
+require('trouble').setup()
+
