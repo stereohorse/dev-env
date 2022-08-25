@@ -30,6 +30,10 @@ return require('packer').startup(function(use)
     requires = "kyazdani42/nvim-web-devicons"
   }
 
+  use {
+    "gpanders/editorconfig.nvim"
+  }
+
   -- LOOK AND FEEL
   use { 'dracula/vim', as = 'dracula' }
   use { 'glepnir/dashboard-nvim' }
