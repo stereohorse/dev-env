@@ -11,6 +11,7 @@ require("mason-lspconfig").setup({
         "ocaml-lsp",
         "clangd",
         "cmake",
+        "racket_langserver",
     }
 })
 
@@ -59,6 +60,8 @@ require("mason-lspconfig").setup_handlers {
         }
     end,
 }
+
+require'lspconfig'.racket_langserver.setup{}
 
 local luasnip = require 'luasnip'
 

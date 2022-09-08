@@ -34,6 +34,13 @@ return require('packer').startup(function(use)
     "gpanders/editorconfig.nvim"
   }
 
+  -- CLOJURE
+  use { 'Olical/conjure' }
+
+  use { 'tpope/vim-dispatch' }
+  use { 'clojure-vim/vim-jack-in' }
+  use { 'radenling/vim-dispatch-neovim' }
+
   -- LOOK AND FEEL
   use { 'dracula/vim', as = 'dracula' }
   use { 'glepnir/dashboard-nvim' }
@@ -48,7 +55,7 @@ return require('packer').startup(function(use)
   }
   use {
     'nvim-telescope/telescope-fzf-native.nvim',
-    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+    run = 'make'
   }
   use {
     'ludovicchabant/vim-gutentags'
