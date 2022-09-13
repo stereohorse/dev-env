@@ -131,3 +131,31 @@ vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
   {silent = true, noremap = true}
 )
 
+-- FORMATTING
+require("formatter").setup {
+    filetype = {
+        typescript = {
+            function()
+                return {
+                    exe = "prettierd",
+                    args = {vim.api.nvim_buf_get_name(0)},
+                    stdin = true,
+                }
+            end
+        },
+        javascript = {
+            function()
+                return {
+                    exe = "prettierd",
+                    args = {vim.api.nvim_buf_get_name(0)},
+                    stdin = true,
+                }
+            end
+        },
+        ["*"] = {
+            require("formatter.filetypes.any").remove_trailing_spaces
+        }
+    }
+}
+
+vim.api.nvim_set_keymap('n', '<Leader>f', ':Format<CR>', { noremap = true, silent = true })

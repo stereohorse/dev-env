@@ -13,6 +13,8 @@ return require('packer').startup(function(use)
     "neovim/nvim-lspconfig",
   }
 
+  use { "mhartington/formatter.nvim" }
+
   use { 'numToStr/Comment.nvim' }
 
   use {
@@ -40,6 +42,9 @@ return require('packer').startup(function(use)
   use { 'tpope/vim-dispatch' }
   use { 'clojure-vim/vim-jack-in' }
   use { 'radenling/vim-dispatch-neovim' }
+
+  -- RESCRIPT
+  use 'rescript-lang/vim-rescript'
 
   -- LOOK AND FEEL
   use { 'dracula/vim', as = 'dracula' }
