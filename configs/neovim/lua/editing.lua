@@ -7,12 +7,12 @@ require("mason-lspconfig").setup({
         "pyright",
         "json-lsp",
         "tsserver",
-        "jdtls",
         "ocaml-lsp",
         "clangd",
         "cmake",
         "racket_langserver",
-    }
+    },
+    automatic_installation = {exclude = { "jdtls" }},
 })
 
 

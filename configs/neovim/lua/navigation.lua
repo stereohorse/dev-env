@@ -1,3 +1,5 @@
+require('leap').set_default_keymaps()
+
 require('telescope').setup()
 require('telescope').load_extension('fzf')
 

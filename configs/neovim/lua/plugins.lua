@@ -36,6 +36,9 @@ return require('packer').startup(function(use)
     "gpanders/editorconfig.nvim"
   }
 
+  -- JAVA
+  use { 'mfussenegger/nvim-jdtls' }
+
   -- CLOJURE
   use { 'Olical/conjure' }
 
@@ -53,6 +56,9 @@ return require('packer').startup(function(use)
   use { 'kyazdani42/nvim-tree.lua' }
   use { 'nvim-lualine/lualine.nvim' }
 
+  -- DEBUGGING
+  use { 'mfussenegger/nvim-dap' }
+
   -- NAVIGATION
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -62,7 +68,8 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make'
   }
-  use {
-    'ludovicchabant/vim-gutentags'
-  }
+
+  use 'ludovicchabant/vim-gutentags'
+
+  use 'ggandor/leap.nvim'
 end)
