@@ -12,7 +12,7 @@ require("mason-lspconfig").setup({
         "cmake",
         "racket_langserver",
     },
-    automatic_installation = {exclude = { "jdtls" }},
+    automatic_installation = { exclude = { "jdtls" } },
 })
 
 
@@ -20,7 +20,7 @@ require("mason-lspconfig").setup({
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -61,9 +61,10 @@ require("mason-lspconfig").setup_handlers {
     end,
 }
 
-require'lspconfig'.racket_langserver.setup{}
+require 'lspconfig'.racket_langserver.setup {}
 
 local luasnip = require 'luasnip'
+local lspkind = require('lspkind')
 
 local cmp = require 'cmp'
 cmp.setup {
@@ -71,6 +72,12 @@ cmp.setup {
         expand = function(args)
             luasnip.lsp_expand(args.body)
         end,
+    },
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = 'symbol',
+            maxwidth = 50,
+        })
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -106,6 +113,31 @@ cmp.setup {
     },
 }
 
+-- SAGA
+local keymap = vim.keymap.set
+local saga = require('lspsaga')
+
+saga.init_lsp_saga()
+
+keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
+keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+keymap("n", "gr", "<cmd>Lspsaga rename<CR>", { silent = true })
+keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
+keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
+keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
+keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
+keymap("n", "[E", function()
+    require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+end, { silent = true })
+keymap("n", "]E", function()
+    require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+end, { silent = true })
+keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
+keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+keymap("n", "<A-d>", "<cmd>Lspsaga open_floaterm<CR>", { silent = true })
+keymap("t", "<A-d>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
+
 -- COMMENTING
 require('Comment').setup()
 
@@ -113,22 +145,22 @@ require('Comment').setup()
 require('trouble').setup()
 
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
-  {silent = true, noremap = true}
+    { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>",
-  {silent = true, noremap = true}
+    { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>",
-  {silent = true, noremap = true}
+    { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>",
-  {silent = true, noremap = true}
+    { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",
-  {silent = true, noremap = true}
+    { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
-  {silent = true, noremap = true}
+    { silent = true, noremap = true }
 )
 
 -- FORMATTING
@@ -138,7 +170,7 @@ require("formatter").setup {
             function()
                 return {
                     exe = "prettierd",
-                    args = {vim.api.nvim_buf_get_name(0)},
+                    args = { vim.api.nvim_buf_get_name(0) },
                     stdin = true,
                 }
             end
@@ -147,7 +179,7 @@ require("formatter").setup {
             function()
                 return {
                     exe = "prettierd",
-                    args = {vim.api.nvim_buf_get_name(0)},
+                    args = { vim.api.nvim_buf_get_name(0) },
                     stdin = true,
                 }
             end

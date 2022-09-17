@@ -1,75 +1,80 @@
 return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+    use 'wbthomason/packer.nvim'
 
-  -- EDITING
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
+    -- EDITING
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
 
-  use {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-  }
+    use {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+    }
 
-  use { "mhartington/formatter.nvim" }
+    use "mhartington/formatter.nvim"
 
-  use { 'numToStr/Comment.nvim' }
+    use 'numToStr/Comment.nvim'
 
-  use {
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-nvim-lsp',
-    'saadparwaiz1/cmp_luasnip',
-    'L3MON4D3/LuaSnip',
-  }
+    use {
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-nvim-lsp',
+        'saadparwaiz1/cmp_luasnip',
+        'L3MON4D3/LuaSnip',
+    }
 
-  use { 'powerman/vim-plugin-ruscmd' }
+    use 'powerman/vim-plugin-ruscmd'
 
-  use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons"
-  }
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons"
+    }
 
-  use {
-    "gpanders/editorconfig.nvim"
-  }
+    use "gpanders/editorconfig.nvim"
 
-  -- JAVA
-  use { 'mfussenegger/nvim-jdtls' }
+    use {
+        "glepnir/lspsaga.nvim",
+        branch = "main"
+    }
 
-  -- CLOJURE
-  use { 'Olical/conjure' }
+    -- JAVA
+    use 'mfussenegger/nvim-jdtls'
 
-  use { 'tpope/vim-dispatch' }
-  use { 'clojure-vim/vim-jack-in' }
-  use { 'radenling/vim-dispatch-neovim' }
+    -- CLOJURE
+    use 'Olical/conjure'
 
-  -- RESCRIPT
-  use 'rescript-lang/vim-rescript'
+    use 'tpope/vim-dispatch'
+    use 'clojure-vim/vim-jack-in'
+    use 'radenling/vim-dispatch-neovim'
 
-  -- LOOK AND FEEL
-  use { 'dracula/vim', as = 'dracula' }
-  use { 'glepnir/dashboard-nvim' }
-  use { 'kyazdani42/nvim-web-devicons' }
-  use { 'kyazdani42/nvim-tree.lua' }
-  use { 'nvim-lualine/lualine.nvim' }
+    -- RESCRIPT
+    use 'rescript-lang/vim-rescript'
 
-  -- DEBUGGING
-  use { 'mfussenegger/nvim-dap' }
+    -- LOOK AND FEEL
+    use { 'dracula/vim', as = 'dracula' }
+    use 'glepnir/dashboard-nvim'
+    use 'kyazdani42/nvim-web-devicons'
+    use 'kyazdani42/nvim-tree.lua'
+    use 'nvim-lualine/lualine.nvim'
+    use 'nvim-lua/lsp-status.nvim'
+    use 'onsails/lspkind.nvim'
 
-  -- NAVIGATION
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    run = 'make'
-  }
+    -- DEBUGGING
+    use { 'mfussenegger/nvim-dap' }
 
-  use 'ludovicchabant/vim-gutentags'
+    -- NAVIGATION
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
+    use {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'make'
+    }
 
-  use 'ggandor/leap.nvim'
+    use 'ludovicchabant/vim-gutentags'
+
+    use 'ggandor/leap.nvim'
 end)

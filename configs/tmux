@@ -21,7 +21,7 @@ bind % split-window -h -c "#{pane_current_path}"
 bind c new-window -c "#{pane_current_path}"
 
 # hide status bar
-set -g status off
+#set -g status off
 bind-key -n F4 set -g status
 
 
@@ -60,7 +60,9 @@ set -g @plugin 'dracula/tmux'
 set -g @shell_mode 'vi'
 
 # continuum
+set -g @continuum-boot 'on'
 set -g @continuum-restore 'on'
+set -g @continuum-boot-options 'iterm,fullscreen'
 
 # ressurect
 set -g @resurrect-strategy-nvim 'session'
