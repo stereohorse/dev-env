@@ -5,12 +5,9 @@ require("mason-lspconfig").setup({
     ensure_installed = {
         "sumneko_lua",
         "pyright",
-        "json-lsp",
         "tsserver",
-        "ocaml-lsp",
         "clangd",
         "cmake",
-        "racket_langserver",
     },
     automatic_installation = { exclude = { "jdtls" } },
 })
