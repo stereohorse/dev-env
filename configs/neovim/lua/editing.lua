@@ -1,66 +1,24 @@
 -- LSP
 require("mason").setup()
-
-require("mason-lspconfig").setup({
-    ensure_installed = {
-        "sumneko_lua",
-        "pyright",
-        "tsserver",
-        "clangd",
-        "cmake",
-    },
-    automatic_installation = { exclude = { "jdtls" } },
-})
-
+require("mason-lspconfig").setup()
+require("mason-nvim-dap").setup()
+require("mason-null-ls").setup()
 
 -- COMPLETION
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-local on_attach = function(_, bufnr)
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
-end
+local default_capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities(default_capabilities)
 
 require("mason-lspconfig").setup_handlers {
     function(server_name)
         require("lspconfig")[server_name].setup {
-            on_attach = on_attach,
             capabilities = capabilities,
         }
-    end,
-    ["sumneko_lua"] = function()
-        require('lspconfig').sumneko_lua.setup {
-            on_attach = on_attach,
-            capabilities = capabilities,
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        globals = { "vim" }
-                    }
-                }
-            }
-        }
-    end,
+    end
 }
 
-require 'lspconfig'.racket_langserver.setup {}
-
 local luasnip = require 'luasnip'
+require("luasnip.loaders.from_vscode").lazy_load()
+
 local lspkind = require('lspkind')
 
 local cmp = require 'cmp'
@@ -106,85 +64,59 @@ cmp.setup {
     sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = 'path' }
+        { name = 'path' },
+        { name = 'buffer' },
     },
 }
 
 -- SAGA
+require("lspsaga").setup({})
 local keymap = vim.keymap.set
-local saga = require('lspsaga')
 
-saga.init_lsp_saga()
+keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
+keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+keymap("n", "gr", "<cmd>Lspsaga rename<CR>")
+keymap("n", "gr", "<cmd>Lspsaga rename ++project<CR>")
+keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
+keymap("n","gd", "<cmd>Lspsaga goto_definition<CR>")
+keymap("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
+keymap("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+keymap("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
+keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+keymap("n","<leader>o", "<cmd>Lspsaga outline<CR>")
+keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+keymap("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>")
+keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
+keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
+keymap({"n", "t"}, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
 
-keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
-keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
-keymap("n", "gr", "<cmd>Lspsaga rename<CR>", { silent = true })
-keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
-keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
-keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
-keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
-keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
-keymap("n", "[E", function()
-    require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
-end, { silent = true })
-keymap("n", "]E", function()
-    require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
-end, { silent = true })
-keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
-keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
-keymap("n", "<A-d>", "<cmd>Lspsaga open_floaterm<CR>", { silent = true })
-keymap("t", "<A-d>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
+
+-- Treesitter
+require'nvim-treesitter.configs'.setup {
+    auto_install = true,
+}
+
 
 -- COMMENTING
 require('Comment').setup()
 
+
 -- DIAGNOSTICS
 require('trouble').setup()
 
-vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>",
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>",
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>",
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
-    { silent = true, noremap = true }
-)
+-- TODO: use keyset from saga section
+vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", { silent = true, noremap = true })
 
--- FORMATTING
-require("formatter").setup {
-    filetype = {
-        typescript = {
-            function()
-                return {
-                    exe = "prettierd",
-                    args = { vim.api.nvim_buf_get_name(0) },
-                    stdin = true,
-                }
-            end
-        },
-        javascript = {
-            function()
-                return {
-                    exe = "prettierd",
-                    args = { vim.api.nvim_buf_get_name(0) },
-                    stdin = true,
-                }
-            end
-        },
-        ["*"] = {
-            require("formatter.filetypes.any").remove_trailing_spaces
-        }
-    }
-}
 
-vim.api.nvim_set_keymap('n', '<Leader>f', ':Format<CR>', { noremap = true, silent = true })
+-- null-ls
+local null_ls = require("null-ls")
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.completion.spell,
+        null_ls.builtins.code_actions.gomodifytags,
+    },
+})
+

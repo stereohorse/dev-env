@@ -8,7 +8,7 @@ opt.splitbelow = true
 opt.termguicolors = true
 cmd[[colorscheme dracula]]
 cmd[[let mapleader = ","]]
-cmd[[syntax off]]
+cmd[[syntax on]]
 
 opt.expandtab = true
 opt.shiftwidth = 4
