@@ -74,4 +74,9 @@ return require('packer').startup(function(use)
     use 'ludovicchabant/vim-gutentags'
 
     use 'ggandor/leap.nvim'
+
+    -- LANGUAGES
+    use {
+        'fatih/vim-go',
+    }
 end)
