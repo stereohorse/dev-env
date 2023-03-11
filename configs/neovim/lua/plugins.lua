@@ -75,6 +75,10 @@ return require('packer').startup(function(use)
 
     use 'ggandor/leap.nvim'
 
+    use 'simrat39/symbols-outline.nvim'
+
+    use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+
     -- LANGUAGES
     use {
         'fatih/vim-go',
