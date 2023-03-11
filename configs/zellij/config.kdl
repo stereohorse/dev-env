@@ -106,9 +106,12 @@ keybinds {
         bind "Esc" { UndoRenamePane; SwitchToMode "Pane"; }
     }
     session {
-        bind "Ctrl o" { SwitchToMode "Normal"; }
-        bind "Ctrl s" { SwitchToMode "Scroll"; }
-        bind "d" { Detach; }
+        // bind "Ctrl o" { SwitchToMode "Normal"; }
+        // bind "Ctrl s" { SwitchToMode "Scroll"; }
+        // bind "d" { Detach; }
+        unbind "Ctrl o"
+        unbind "Ctrl s"
+        unbind "d"
     }
     tmux {
         bind "[" { SwitchToMode "Scroll"; }
@@ -155,7 +158,8 @@ keybinds {
         bind "Ctrl s" { SwitchToMode "Scroll"; }
     }
     shared_except "session" "locked" {
-        bind "Ctrl o" { SwitchToMode "Session"; }
+        unbind "Ctrl o"
+        // bind "Ctrl o" { SwitchToMode "Session"; }
     }
     shared_except "tab" "locked" {
         bind "Ctrl t" { SwitchToMode "Tab"; }
