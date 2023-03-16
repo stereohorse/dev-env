@@ -15,3 +15,8 @@ pyenv virtualenv-init - | source
 source /Users/viet/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
+
+# pnpm
+set -gx PNPM_HOME "/Users/viet/Library/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end

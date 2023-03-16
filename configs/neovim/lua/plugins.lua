@@ -22,19 +22,16 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-cmdline',
         'hrsh7th/cmp-nvim-lsp',
-        'saadparwaiz1/cmp_luasnip',
+        'hrsh7th/nvim-cmp',
+        'petertriho/cmp-git',
     }
 
-    use({
-        "L3MON4D3/LuaSnip",
-        tag = "v1.*",
-        run = "make install_jsregexp"
-    })
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/vim-vsnip'
 
     use 'numToStr/Comment.nvim'
 
