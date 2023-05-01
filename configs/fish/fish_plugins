@@ -1,5 +1,3 @@
 jorgebucaran/fisher
-edc/bass
 reitzig/sdkman-for-fish@v1.4.0
-JGAntunes/fish-gvm
-FabioAntunes/fish-nvm
+jorgebucaran/nvm.fish
