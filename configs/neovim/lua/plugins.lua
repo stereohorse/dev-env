@@ -17,7 +17,7 @@ return require('packer').startup(function(use)
         'jay-babu/mason-nvim-dap.nvim',
         'mfussenegger/nvim-dap',
 
-        'jose-elias-alvarez/null-ls.nvim',
+        'nvimtools/none-ls.nvim',
         'jay-babu/mason-null-ls.nvim',
     }
 
@@ -30,8 +30,12 @@ return require('packer').startup(function(use)
         'petertriho/cmp-git',
     }
 
-    use 'hrsh7th/cmp-vsnip'
-    use 'hrsh7th/vim-vsnip'
+    use {
+        'hrsh7th/cmp-vsnip',
+        'hrsh7th/vim-vsnip',
+    }
+
+    use 'norcalli/nvim-colorizer.lua'
 
     use 'numToStr/Comment.nvim'
 
@@ -40,14 +44,11 @@ return require('packer').startup(function(use)
         requires = 'kyazdani42/nvim-web-devicons'
     }
 
-    use {
-        'glepnir/lspsaga.nvim',
-        branch = 'main',
-    }
-
-    use 'gpanders/editorconfig.nvim'
+    use "stevearc/conform.nvim"
 
     use 'powerman/vim-plugin-ruscmd'
+
+    use 'github/copilot.vim'
 
     -- LOOK AND FEEL
     use { 'dracula/vim', as = 'dracula' }
@@ -57,6 +58,14 @@ return require('packer').startup(function(use)
     use 'nvim-lualine/lualine.nvim'
     use 'nvim-lua/lsp-status.nvim'
     use 'onsails/lspkind.nvim'
+    use "folke/which-key.nvim"
+    use 'lewis6991/gitsigns.nvim'
+
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { {"nvim-lua/plenary.nvim"} }
+    }
 
     -- NAVIGATION
     use {
@@ -75,9 +84,4 @@ return require('packer').startup(function(use)
     use 'simrat39/symbols-outline.nvim'
 
     use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
-
-    -- LANGUAGES
-    use {
-        'fatih/vim-go',
-    }
 end)

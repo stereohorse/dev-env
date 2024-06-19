@@ -28,3 +28,9 @@ local api = vim.api
 
 api.nvim_set_keymap('n', '<Leader>tt',  ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 api.nvim_set_keymap('n', '<Leader>tf',  ':NvimTreeFocus<CR>', { noremap = true, silent = true })
+
+-- WHICHKEY
+require("which-key").setup {}
+
+-- GIT SIGNS
+require('gitsigns').setup()

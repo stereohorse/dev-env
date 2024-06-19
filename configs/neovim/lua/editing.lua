@@ -18,7 +18,7 @@ require("mason-lspconfig").setup_handlers {
         require("lspconfig")[server_name].setup {
             capabilities = capabilities,
         }
-    end
+    end,
 }
 
 local lspkind = require('lspkind')
@@ -117,31 +117,12 @@ cmp.setup.cmdline(':', {
 
 require("cmp_git").setup()
 
--- SAGA
-require("lspsaga").setup({})
-local keymap = vim.keymap.set
-
-keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
-keymap("n", "gf", "<cmd>lua vim.lsp.buf.format { async = true }<CR>")
-keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
-keymap("n", "gr", "<cmd>Lspsaga rename<CR>")
-keymap("n", "gr", "<cmd>Lspsaga rename ++project<CR>")
-keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
-keymap("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
-keymap("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
-keymap("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
-keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
-keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
-keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
-keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
-keymap({ "n", "t" }, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
-
 
 -- Treesitter
 require 'nvim-treesitter.configs'.setup {
     auto_install = true,
+    highlight = { enable = true },
+    indent = { enable = true },
 }
 
 
@@ -152,7 +133,6 @@ require('Comment').setup()
 -- DIAGNOSTICS
 require('trouble').setup()
 
--- TODO: use keyset from saga section
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", { silent = true, noremap = true })
 
@@ -162,6 +142,38 @@ local null_ls = require("null-ls")
 
 null_ls.setup({
     sources = {
-        null_ls.builtins.code_actions.gomodifytags,
+        null_ls.builtins.formatting.biome,
     },
 })
+
+-- conform.vim
+require("conform").setup({
+  formatters_by_ft = {
+    javascript = { 'biome' },
+    javascriptreact = { 'biome' },
+    typeescript = { 'biome' },
+    typeescriptreact = { 'biome' },
+  },
+})
+
+vim.api.nvim_create_user_command("Format", function(args)
+  local range = nil
+  if args.count ~= -1 then
+    local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+    range = {
+      start = { args.line1, 0 },
+      ["end"] = { args.line2, end_line:len() },
+    }
+  end
+  require("conform").format({ async = true, lsp_format = "fallback", range = range })
+end, { range = true })
+
+-- Copilot
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
+
+-- Colorizer
+require 'colorizer'.setup()
