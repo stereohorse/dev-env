@@ -19,6 +19,9 @@ wk.register({
         g = { telescope_builtin.live_grep, "Grep" },
         b = { telescope_builtin.buffers, "Buffers" },
         h = { telescope_builtin.help_tags, "Help" },
+        r = { telescope_builtin.lsp_references, "References" },
+        i = { telescope_builtin.lsp_implementations, "Implementations" },
+        t = { telescope_builtin.treesitter, "Treesitter" },
         s = { telescope.extensions.smart_open.smart_open, "Smart open" },
         c = { telescope_builtin.current_buffer_fuzzy_find, "Current buffer" },
     }

@@ -10,6 +10,22 @@ wk.register({
     l = {
         name = "LSP",
         f = { "<cmd>Format<cr>", "Format" },
+        l = { function() vim.lsp.buf.code_action() end, "All actions" },
+        q = { function() vim.lsp.buf.code_action({ only = "quickfix" }) end, "Quickfix" },
+        s = { function() vim.lsp.buf.code_action({ only = "source" }) end, "Source" },
+        e = { function() vim.lsp.buf.code_action({ only = "refactor" }) end, "Refactor" },
+        i = { function() vim.lsp.buf.code_action({ only = "source.organizeImports" }) end, "Organize imports" },
+        a = { function() vim.lsp.buf.code_action({ only = "source.fixAll" }) end, "Fix all" },
+        r = { function() vim.lsp.buf.rename() end, "Rename" },
+        h = { function() vim.lsp.buf.signature_help() end, "Signature" },
+        g = {
+            name = "Go to",
+            d = { function() vim.lsp.buf.definition() end, "Definition" },
+            e = { function() vim.lsp.buf.declaration() end, "Declaration" },
+            i = { function() vim.lsp.buf.implementation() end, "Implementation" },
+            t = { function() vim.lsp.buf.type_definition() end, "Type definition" },
+            r = { function() vim.lsp.buf.references() end, "References" },
+        }
     },
 }, { prefix = "<leader>" })
 
@@ -191,4 +207,20 @@ vim.g.copilot_no_tab_map = true
 
 -- Colorizer
 require 'colorizer'.setup()
+
+-- Git
+local neogit = require('neogit')
+neogit.setup {}
+
+wk.register({
+    g = {
+        name = "Neogit",
+        t = { neogit.open, "Open" },
+        c = { function() neogit.open({ "commit" }) end, "Commit" },
+        d = { function() neogit.open({ "diff" }) end, "Diff" },
+        f = { function() neogit.open({ "fetch" }) end, "Fetch" },
+        p = { function() neogit.open({ "pull" }) end, "Pull" },
+        u = { function() neogit.open({ "push" }) end, "Push" },
+    },
+}, { prefix = "<leader>" })
 

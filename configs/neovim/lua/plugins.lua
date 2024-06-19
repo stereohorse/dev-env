@@ -48,6 +48,8 @@ return require('packer').startup(function(use)
 
     use 'github/copilot.vim'
 
+    use { "NeogitOrg/neogit", requires = "sindrets/diffview.nvim" }
+
     -- LOOK AND FEEL
     use { 'dracula/vim', as = 'dracula' }
     use 'glepnir/dashboard-nvim'
