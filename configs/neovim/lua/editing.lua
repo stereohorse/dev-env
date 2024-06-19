@@ -1,8 +1,17 @@
+local wk = require("which-key")
+
 -- LSP
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-nvim-dap").setup()
 require("mason-null-ls").setup()
+
+wk.register({
+    l = {
+        name = "LSP",
+        f = { "<cmd>Format<cr>", "Format" },
+    },
+}, { prefix = "<leader>" })
 
 -- COMPLETION
 local default_capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -21,7 +30,7 @@ require("mason-lspconfig").setup_handlers {
     end,
 }
 
-local lspkind = require('lspkind')
+local lspkind = require('lspkind') -- completion icons
 
 local has_words_before = function()
     unpack = unpack or table.unpack
@@ -133,8 +142,13 @@ require('Comment').setup()
 -- DIAGNOSTICS
 require('trouble').setup()
 
-vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", { silent = true, noremap = true })
+wk.register({
+    x = {
+        name = "Trouble",
+        x = { "<cmd>Trouble<cr>", "Show" },
+        w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
+    },
+}, { prefix = "<leader>" })
 
 
 -- null-ls
@@ -177,3 +191,4 @@ vim.g.copilot_no_tab_map = true
 
 -- Colorizer
 require 'colorizer'.setup()
+

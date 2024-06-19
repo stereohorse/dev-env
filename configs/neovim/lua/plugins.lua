@@ -65,6 +65,10 @@ return require('packer').startup(function(use)
         requires = { {"nvim-lua/plenary.nvim"} }
     }
 
+    use {"akinsho/toggleterm.nvim", tag = '*' }
+
+    use "stevearc/oil.nvim"
+
     -- NAVIGATION
     use {
         'nvim-telescope/telescope.nvim',
@@ -84,4 +88,10 @@ return require('packer').startup(function(use)
     use 'simrat39/symbols-outline.nvim'
 
     use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+
+    use {
+        "danielfalk/smart-open.nvim",
+        branch = "0.2.x",
+        requires = "kkharji/sqlite.lua",
+    }
 end)

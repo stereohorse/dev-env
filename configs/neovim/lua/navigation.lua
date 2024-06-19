@@ -8,6 +8,7 @@ local telescope = require('telescope')
 telescope.setup()
 telescope.load_extension('fzf')
 telescope.load_extension('projects')
+telescope.load_extension("smart_open")
 
 local telescope_builtin = require('telescope.builtin')
 
@@ -18,6 +19,7 @@ wk.register({
         g = { telescope_builtin.live_grep, "Grep" },
         b = { telescope_builtin.buffers, "Buffers" },
         h = { telescope_builtin.help_tags, "Help" },
+        s = { telescope.extensions.smart_open.smart_open, "Smart open" },
         c = { telescope_builtin.current_buffer_fuzzy_find, "Current buffer" },
     }
 }, { prefix = "<leader>" })
