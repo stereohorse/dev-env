@@ -7,17 +7,18 @@ require('leap').set_default_keymaps()
 local telescope = require('telescope')
 telescope.setup()
 telescope.load_extension('fzf')
+telescope.load_extension('projects')
 
 local telescope_builtin = require('telescope.builtin')
 
 wk.register({
     f = {
         name = "Find",
-        f = { function() telescope_builtin.find_files() end, "Files" },
-        g = { function() telescope_builtin.live_grep() end, "Grep" },
-        b = { function() telescope_builtin.buffers() end, "Buffers" },
-        h = { function() telescope_builtin.help_tags() end, "Help" },
-        c = { function() telescope_builtin.current_buffer_fuzzy_find() end, "Current buffer" },
+        f = { telescope_builtin.find_files, "Files" },
+        g = { telescope_builtin.live_grep, "Grep" },
+        b = { telescope_builtin.buffers, "Buffers" },
+        h = { telescope_builtin.help_tags, "Help" },
+        c = { telescope_builtin.current_buffer_fuzzy_find, "Current buffer" },
     }
 }, { prefix = "<leader>" })
 
@@ -78,12 +79,43 @@ end
 wk.register({
     h = {
         name = "Harpoon",
-        a = { function() harpoon:list():add() end, "Add current file" },
+        a = { function() harpoon:list():add() end, "Append current file" },
+        p = { function() harpoon:list():add() end, "Prepend current file" },
         t = { function() toggle_telescope(harpoon:list()) end, "Show list" },
+
         ["1"] = { function() harpoon:list():select(1) end, "Item 1" },
         ["2"] = { function() harpoon:list():select(2) end, "Item 2" },
         ["3"] = { function() harpoon:list():select(3) end, "Item 3" },
         ["4"] = { function() harpoon:list():select(4) end, "Item 4" },
         ["5"] = { function() harpoon:list():select(5) end, "Item 5" },
+        r = {
+            name = "Replace",
+            ["1"] = { function() harpoon:list():replace_at(1) end, "Replace item 1" },
+            ["2"] = { function() harpoon:list():replace_at(2) end, "Replace item 2" },
+            ["3"] = { function() harpoon:list():replace_at(3) end, "Replace item 3" },
+            ["4"] = { function() harpoon:list():replace_at(4) end, "Replace item 4" },
+            ["5"] = { function() harpoon:list():replace_at(5) end, "Replace item 5" },
+        },
+        c = {
+            name = "Remove",
+            c = { function() harpoon:list():clear() end, "Clear entire list" },
+            ["1"] = { function() harpoon:list():remove_at(1) end, "Remove item 1" },
+            ["2"] = { function() harpoon:list():remove_at(2) end, "Remove item 2" },
+            ["3"] = { function() harpoon:list():remove_at(3) end, "Remove item 3" },
+            ["4"] = { function() harpoon:list():remove_at(4) end, "Remove item 4" },
+            ["5"] = { function() harpoon:list():remove_at(5) end, "Remove item 5" },
+        }
     }
 }, { prefix = "<leader>" })
+
+-- PROJECTS
+local project = require("project_nvim")
+project.setup()
+
+wk.register({
+    p = {
+        name = "Projects",
+        t = { telescope.extensions.projects.projects, "List" },
+    }
+}, { prefix = "<leader>" })
+

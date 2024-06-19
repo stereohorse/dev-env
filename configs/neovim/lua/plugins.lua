@@ -46,8 +46,6 @@ return require('packer').startup(function(use)
 
     use "stevearc/conform.nvim"
 
-    use 'powerman/vim-plugin-ruscmd'
-
     use 'github/copilot.vim'
 
     -- LOOK AND FEEL
@@ -76,6 +74,8 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope-fzf-native.nvim',
         run = 'make'
     }
+
+    use "ahmedkhalf/project.nvim"
 
     use 'ludovicchabant/vim-gutentags'
 

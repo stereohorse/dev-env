@@ -1,3 +1,12 @@
+-- WHICHKEY
+local wk = require("which-key")
+wk.setup {
+    triggers_blacklist = {
+        i = { "j", "k" },
+        v = { "j", "k" },
+    },
+}
+
 -- STATUSLINE
 require('lualine').setup()
 
@@ -24,13 +33,13 @@ db.custom_footer = {
 -- TREE
 require("nvim-tree").setup()
 
-local api = vim.api
-
-api.nvim_set_keymap('n', '<Leader>tt',  ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-api.nvim_set_keymap('n', '<Leader>tf',  ':NvimTreeFocus<CR>', { noremap = true, silent = true })
-
--- WHICHKEY
-require("which-key").setup {}
+wk.register({
+    t = {
+        name = "Tree",
+        t = { "<cmd>NvimTreeToggle<cr>", "Toggle" },
+        f = { "<cmd>NvimTreeFindFile<cr>", "Find file" },
+    }
+}, { prefix = "<leader>" })
 
 -- GIT SIGNS
 require('gitsigns').setup()
